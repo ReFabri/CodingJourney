@@ -34,6 +34,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  margin-bottom: 1rem;
 }
 
 .grid-options button {
@@ -48,4 +49,16 @@
   outline: none;
   padding: 0;
   margin: 0;
+}
+
+.gridCanvas {
+  display: flex;
+  flex-wrap: wrap;
+  align-self: center;
+}
+
+.gridCanvas .grid-tile {
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #aaa;
 }
