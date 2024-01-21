@@ -1,1 +1,51 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixel Art Generator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="title">
+        <h1>Pixel Art Generator</h1>
+      </div>
+      <div class="sliders-container">
+        <div>
+          <label for="gridWidth">Grid Width</label>
+          <input
+            type="range"
+            min="3"
+            max="50"
+            step="1"
+            name="gridWidth"
+            id="gridWidth"
+          />
+          <span id="gridWidth-label">35</span>
+        </div>
+        <div>
+          <label for="gridHeight">Grid Height</label>
+          <input
+            type="range"
+            min="3"
+            max="50"
+            step="1"
+            name="gridHeight"
+            id="gridHeight"
+          />
+          <span id="gridHeight-label">35</span>
+        </div>
+      </div>
+      <div class="grid-options">
+        <button id="optn-create">Create Grid</button>
+        <button id="optn-clear">Clear Grid</button>
+        <input type="color" id="optn-picker" name="picker" value="#e66465" />
+        <button id="optn-erase">Erase</button>
+        <button id="optn-paint">Paint</button>
+      </div>
+      <div class="gridPaint"></div>
+    </div>
+  </body>
+</html>
