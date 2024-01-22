@@ -12,6 +12,20 @@ let gridTiles;
 let isDrawing = false;
 let isErasing = false;
 
+function isTouchDevice() {
+  return (
+    "ontouchstart" in window ||
+    navigator.maxTouchPoints > 0 ||
+    navigator.msMaxTouchPoints > 0
+  );
+}
+
+const deviceEvent = {
+  startPaint: isTouchDevice() ? "touchstart" : "mousedown",
+  stopPaint: isTouchDevice() ? "touchend" : "mouseup",
+  keepPainting: isTouchDevice() ? "touchmove" : "mousemove",
+};
+
 gridWidthInput.addEventListener("change", () => {
   gridWidthLabel.innerText = gridWidthInput.value;
 });
@@ -38,7 +52,7 @@ btnCreate.addEventListener("click", () => {
   }
   gridTiles = document.querySelectorAll(".grid-tile");
   gridTiles.forEach((tile) => {
-    tile.addEventListener("mousedown", () => {
+    tile.addEventListener(deviceEvent.startPaint, () => {
       isDrawing = true;
       if (isErasing) {
         tile.style.backgroundColor = "transparent";
@@ -47,11 +61,11 @@ btnCreate.addEventListener("click", () => {
       }
     });
 
-    tile.addEventListener("mouseup", () => {
+    tile.addEventListener(deviceEvent.stopPaint, () => {
       isDrawing = false;
     });
 
-    tile.addEventListener("mousemove", () => {
+    tile.addEventListener(deviceEvent.keepPainting, () => {
       if (isDrawing && isErasing) {
         tile.style.backgroundColor = "transparent";
       }
@@ -73,8 +87,3 @@ btnErase.addEventListener("click", () => {
 btnPaint.addEventListener("click", () => {
   isErasing = false;
 });
-
-//==============================================================
-
-// mousedown mousemove mouseup
-// touchstart touchmove touchend
