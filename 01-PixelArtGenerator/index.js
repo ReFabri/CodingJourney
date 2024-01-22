@@ -26,11 +26,11 @@ const deviceEvent = {
   keepPainting: isTouchDevice() ? "touchmove" : "mousemove",
 };
 
-gridWidthInput.addEventListener("change", () => {
+gridWidthInput.addEventListener("input", () => {
   gridWidthLabel.innerText = gridWidthInput.value;
 });
 
-gridHeightInput.addEventListener("change", () => {
+gridHeightInput.addEventListener("input", () => {
   gridHeightLabel.innerText = gridHeightInput.value;
 });
 

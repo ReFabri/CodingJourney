@@ -10,6 +10,7 @@
 .main-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .title h1 {
@@ -21,6 +22,8 @@
 .sliders-container {
   display: flex;
   justify-content: space-evenly;
+  gap: 1rem;
+  max-width: 640px;
   margin-bottom: 1rem;
 }
 
@@ -33,14 +36,24 @@
 .grid-options {
   display: flex;
   justify-content: space-evenly;
+  max-width: 640px;
+  gap: 1rem;
   align-items: center;
   margin-bottom: 1rem;
 }
 
 .grid-options button {
+  background-color: #eee;
   border: 1px solid #aaa;
   padding: 0.5rem;
   border-radius: 0.5rem;
+}
+
+.grid-options button:active {
+  background-color: #ddd;
+  -webkit-box-shadow: inset 1px 1px 1px 0px #333;
+  -moz-box-shadow: inset 1px 1px 1px 0px #333;
+  box-shadow: inset 1px 1px 1px 0px #333;
 }
 
 .grid-options div {
