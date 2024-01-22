@@ -9,18 +9,17 @@ const btnPaint = document.getElementById("btn-paint");
 const colorPicker = document.getElementById("picker");
 const gridCanvas = document.querySelector(".gridCanvas");
 let gridTiles;
+let isDrawing = false;
+let isErasing = false;
 
-//Update width Label
 gridWidthInput.addEventListener("change", () => {
   gridWidthLabel.innerText = gridWidthInput.value;
 });
 
-//Update height Label
 gridHeightInput.addEventListener("change", () => {
   gridHeightLabel.innerText = gridHeightInput.value;
 });
 
-//Create grid
 btnCreate.addEventListener("click", () => {
   const rows = gridHeightInput.value;
   const cols = gridWidthInput.value;
@@ -38,28 +37,44 @@ btnCreate.addEventListener("click", () => {
     gridCanvas.appendChild(newRow);
   }
   gridTiles = document.querySelectorAll(".grid-tile");
+  gridTiles.forEach((tile) => {
+    tile.addEventListener("mousedown", () => {
+      isDrawing = true;
+      if (isErasing) {
+        tile.style.backgroundColor = "transparent";
+      } else {
+        tile.style.backgroundColor = colorPicker.value;
+      }
+    });
+
+    tile.addEventListener("mouseup", () => {
+      isDrawing = false;
+    });
+
+    tile.addEventListener("mousemove", () => {
+      if (isDrawing && isErasing) {
+        tile.style.backgroundColor = "transparent";
+      }
+      if (isDrawing && !isErasing) {
+        tile.style.backgroundColor = colorPicker.value;
+      }
+    });
+  });
+});
+
+btnClear.addEventListener("click", () => {
+  gridCanvas.innerHTML = "";
+});
+
+btnErase.addEventListener("click", () => {
+  isErasing = true;
+});
+
+btnPaint.addEventListener("click", () => {
+  isErasing = false;
 });
 
 //==============================================================
 
 // mousedown mousemove mouseup
 // touchstart touchmove touchend
-
-let isDrawing = false;
-let isErasing = false;
-
-gridCanvas.addEventListener("mouseover", () => {
-  gridTiles.forEach((tile) => {
-    tile.addEventListener("mousedown", () => {
-      isDrawing = true;
-      tile.style.backgroundColor = colorPicker.value;
-    });
-    tile.addEventListener("mouseup", () => {
-      isDrawing = false;
-    });
-
-    tile.addEventListener("mousemove", () => {
-      if (isDrawing) tile.style.backgroundColor = colorPicker.value;
-    });
-  });
-});
