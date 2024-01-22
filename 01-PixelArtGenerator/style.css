@@ -80,10 +80,14 @@
   display: flex;
   flex-wrap: nowrap;
   align-self: center;
+  border: 1px solid #ddd;
+  border-right: none;
+  border-top: none;
 }
 
 .gridCanvas .grid-tile {
   width: 1rem;
   height: 1rem;
-  border: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-top: 1px solid #ddd;
 }
