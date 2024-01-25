@@ -78,3 +78,94 @@ btnLink.addEventListener("click", () => {
   link.setAttribute("href", url);
   range.surroundContents(link);
 });
+
+btnAlignLeft.addEventListener("click", () => {
+  const [selection, range] = getSelectedText();
+
+  if (
+    range.commonAncestorContainer.parentNode.classList.contains("text-editor")
+  ) {
+    let div = document.createElement("div");
+    range.surroundContents(div);
+  } else {
+    range.commonAncestorContainer.parentNode.style.textAlign = "left";
+  }
+});
+
+btnAlignCenter.addEventListener("click", () => {
+  const [selection, range] = getSelectedText();
+
+  if (
+    range.commonAncestorContainer.parentNode.classList.contains("text-editor")
+  ) {
+    let div = document.createElement("div");
+    range.surroundContents(div);
+  } else {
+    range.commonAncestorContainer.parentNode.style.textAlign = "center";
+  }
+});
+
+btnAlignRight.addEventListener("click", () => {
+  const [selection, range] = getSelectedText();
+
+  if (
+    range.commonAncestorContainer.parentNode.classList.contains("text-editor")
+  ) {
+    let div = document.createElement("div");
+    range.surroundContents(div);
+  } else {
+    range.commonAncestorContainer.parentNode.style.textAlign = "right";
+  }
+});
+
+btnAlignJustify.addEventListener("click", () => {
+  const [selection, range] = getSelectedText();
+
+  if (
+    range.commonAncestorContainer.parentNode.classList.contains("text-editor")
+  ) {
+    let div = document.createElement("div");
+    range.surroundContents(div);
+  } else {
+    range.commonAncestorContainer.parentNode.style.textAlign = "justify";
+  }
+});
+
+btnHeadings.addEventListener("change", (e) => {
+  const [selection, range] = getSelectedText();
+
+  if (
+    range.commonAncestorContainer.parentNode.classList.contains("text-editor")
+  ) {
+    let div = document.createElement("div");
+    range.surroundContents(div);
+  }
+  let heading = document.createElement(e.target.value);
+  range.surroundContents(heading);
+});
+
+btnFonts.addEventListener("change", (e) => {
+  const [selection, range] = getSelectedText();
+
+  if (
+    range.commonAncestorContainer.parentNode.classList.contains("text-editor")
+  ) {
+    let div = document.createElement("div");
+    range.surroundContents(div);
+  } else {
+    range.commonAncestorContainer.parentNode.style.fontFamily = e.target.value;
+  }
+});
+
+btnFontSize.addEventListener("change", (e) => {
+  const [selection, range] = getSelectedText();
+
+  if (
+    range.commonAncestorContainer.parentNode.classList.contains("text-editor")
+  ) {
+    let div = document.createElement("div");
+    range.surroundContents(div);
+  } else {
+    range.commonAncestorContainer.parentNode.style.fontSize = e.target.value;
+  }
+});
