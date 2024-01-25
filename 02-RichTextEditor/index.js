@@ -19,12 +19,12 @@ function getSelectedText() {
   let selection = window.getSelection();
   let range = selection.getRangeAt(0);
   if (!selection.isCollapsed) {
-    return [selection, range];
+    return range;
   }
 }
 
 btnBold.addEventListener("click", () => {
-  const [selection, range] = getSelectedText();
+  const range = getSelectedText();
 
   if (
     range.commonAncestorContainer.parentNode.classList.contains("text-editor")
@@ -38,7 +38,7 @@ btnBold.addEventListener("click", () => {
 });
 
 btnSup.addEventListener("click", () => {
-  const [selection, range] = getSelectedText();
+  const range = getSelectedText();
 
   if (
     range.commonAncestorContainer.parentNode.classList.contains("text-editor")
@@ -52,7 +52,7 @@ btnSup.addEventListener("click", () => {
 });
 
 btnSub.addEventListener("click", () => {
-  const [selection, range] = getSelectedText();
+  const range = getSelectedText();
 
   if (
     range.commonAncestorContainer.parentNode.classList.contains("text-editor")
@@ -66,7 +66,7 @@ btnSub.addEventListener("click", () => {
 });
 
 btnLink.addEventListener("click", () => {
-  const [selection, range] = getSelectedText();
+  const range = getSelectedText();
 
   if (
     range.commonAncestorContainer.parentNode.classList.contains("text-editor")
@@ -82,7 +82,7 @@ btnLink.addEventListener("click", () => {
 });
 
 btnAlignLeft.addEventListener("click", () => {
-  const [selection, range] = getSelectedText();
+  const range = getSelectedText();
 
   if (
     range.commonAncestorContainer.parentNode.classList.contains("text-editor")
@@ -95,7 +95,7 @@ btnAlignLeft.addEventListener("click", () => {
 });
 
 btnAlignCenter.addEventListener("click", () => {
-  const [selection, range] = getSelectedText();
+  const range = getSelectedText();
 
   if (
     range.commonAncestorContainer.parentNode.classList.contains("text-editor")
@@ -108,7 +108,7 @@ btnAlignCenter.addEventListener("click", () => {
 });
 
 btnAlignRight.addEventListener("click", () => {
-  const [selection, range] = getSelectedText();
+  const range = getSelectedText();
 
   if (
     range.commonAncestorContainer.parentNode.classList.contains("text-editor")
@@ -121,7 +121,7 @@ btnAlignRight.addEventListener("click", () => {
 });
 
 btnAlignJustify.addEventListener("click", () => {
-  const [selection, range] = getSelectedText();
+  const range = getSelectedText();
 
   if (
     range.commonAncestorContainer.parentNode.classList.contains("text-editor")
@@ -134,7 +134,7 @@ btnAlignJustify.addEventListener("click", () => {
 });
 
 btnHeadings.addEventListener("change", (e) => {
-  const [selection, range] = getSelectedText();
+  const range = getSelectedText();
 
   if (
     range.commonAncestorContainer.parentNode.classList.contains("text-editor")
@@ -147,7 +147,7 @@ btnHeadings.addEventListener("change", (e) => {
 });
 
 btnFonts.addEventListener("change", (e) => {
-  const [selection, range] = getSelectedText();
+  const range = getSelectedText();
 
   if (
     range.commonAncestorContainer.parentNode.classList.contains("text-editor")
@@ -160,7 +160,7 @@ btnFonts.addEventListener("change", (e) => {
 });
 
 btnFontSize.addEventListener("change", (e) => {
-  const [selection, range] = getSelectedText();
+  const range = getSelectedText();
 
   if (
     range.commonAncestorContainer.parentNode.classList.contains("text-editor")
@@ -173,7 +173,7 @@ btnFontSize.addEventListener("change", (e) => {
 });
 
 btnFontColor.addEventListener("change", (e) => {
-  const [selection, range] = getSelectedText();
+  const range = getSelectedText();
 
   if (
     range.commonAncestorContainer.parentNode.classList.contains("text-editor")
@@ -186,7 +186,7 @@ btnFontColor.addEventListener("change", (e) => {
 });
 
 btnFontColor.addEventListener("change", (e) => {
-  const [selection, range] = getSelectedText();
+  const range = getSelectedText();
 
   if (
     range.commonAncestorContainer.parentNode.classList.contains("text-editor")
@@ -199,7 +199,7 @@ btnFontColor.addEventListener("change", (e) => {
 });
 
 btnFontHighlight.addEventListener("change", (e) => {
-  const [selection, range] = getSelectedText();
+  const range = getSelectedText();
 
   if (
     range.commonAncestorContainer.parentNode.classList.contains("text-editor")
