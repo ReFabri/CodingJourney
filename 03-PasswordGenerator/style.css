@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5fda66;
+  height: 100dvh;
+}
+
+.main-container {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  max-width: 640px;
+  background-color: #fff;
+}
+
+.main-container > h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.generated-password {
+  display: flex;
+  justify-content: center;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+
+.generated-password input {
+  min-width: 400px;
+  border: 2px solid #c0c0c0;
+  border-right: 1px solid #c0c0c0;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.generated-password button {
+  background-color: transparent;
+  padding: 0 0.5rem;
+  border: 2px solid #c0c0c0;
+  border-left: 1px solid #c0c0c0;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.Password-strength {
+  height: 0.5rem;
+  background-color: rgb(13, 190, 13);
+  margin: 1rem 4rem;
+  border-radius: 0.2rem;
+}
+
+#passLength {
+  width: 100%;
+}
+
+.Password-options {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  margin: 1rem 0 2rem 0;
+}
+
+.generate-password-btn {
+  width: 100%;
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  background-color: #5fda66;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.2rem;
+}
