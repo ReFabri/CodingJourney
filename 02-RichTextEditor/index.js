@@ -12,6 +12,8 @@ const btnAlignJustify = document.querySelector(".btn-align-justify");
 const btnHeadings = document.getElementById("headings");
 const btnFonts = document.getElementById("fonts");
 const btnFontSize = document.getElementById("fontSize");
+const btnFontColor = document.getElementById("fontColor");
+const btnFontHighlight = document.getElementById("highlightColor");
 
 function getSelectedText() {
   let selection = window.getSelection();
@@ -167,5 +169,46 @@ btnFontSize.addEventListener("change", (e) => {
     range.surroundContents(div);
   } else {
     range.commonAncestorContainer.parentNode.style.fontSize = e.target.value;
+  }
+});
+
+btnFontColor.addEventListener("change", (e) => {
+  const [selection, range] = getSelectedText();
+
+  if (
+    range.commonAncestorContainer.parentNode.classList.contains("text-editor")
+  ) {
+    let div = document.createElement("div");
+    range.surroundContents(div);
+  } else {
+    range.commonAncestorContainer.parentNode.style.color = e.target.value;
+  }
+});
+
+btnFontColor.addEventListener("change", (e) => {
+  const [selection, range] = getSelectedText();
+
+  if (
+    range.commonAncestorContainer.parentNode.classList.contains("text-editor")
+  ) {
+    let div = document.createElement("div");
+    range.surroundContents(div);
+  } else {
+    range.commonAncestorContainer.parentNode.style.color = e.target.value;
+  }
+});
+
+btnFontHighlight.addEventListener("change", (e) => {
+  const [selection, range] = getSelectedText();
+
+  if (
+    range.commonAncestorContainer.parentNode.classList.contains("text-editor")
+  ) {
+    let div = document.createElement("div");
+    range.surroundContents(div);
+  } else {
+    range.commonAncestorContainer.parentNode.style.display = "inline-block";
+    range.commonAncestorContainer.parentNode.style.backgroundColor =
+      e.target.value;
   }
 });
