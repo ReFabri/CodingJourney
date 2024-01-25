@@ -44,3 +44,7 @@ button {
   background-color: #fff;
   cursor: text;
 }
+
+.bold {
+  font-weight: bold;
+}
