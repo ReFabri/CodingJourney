@@ -4,6 +4,7 @@ const btnGeneratePass = document.querySelector(".generate-password-btn");
 const inputPassLength = document.querySelector(".password-length input");
 const inputPassLabel = document.querySelector(".password-length label");
 const strengthBar = document.querySelector(".strength-bar");
+const copyBtn = document.querySelector(".copy-password");
 
 const options = {
   lowercase: "abcdefghijklmnopqrstuvwxyz",
@@ -13,10 +14,8 @@ const options = {
   whiteSpaces: " ",
 };
 
-let passLength = inputPassLength.value;
 let removeDuplicates = checkboxes[5].checked;
 let selectedOptions = "";
-let currentStrength = selectedOptions.length + Number(inputPassLength.value);
 
 window.addEventListener("change", () => {
   selectedOptions = "";
@@ -25,7 +24,7 @@ window.addEventListener("change", () => {
       selectedOptions += options[checkboxes[i].id];
     }
   }
-  currentStrength = selectedOptions.length + Number(inputPassLength.value);
+  let currentStrength = selectedOptions.length + Number(inputPassLength.value);
 
   if (currentStrength > 100) {
     strengthBar.style.width = "100%";
@@ -40,6 +39,7 @@ window.addEventListener("change", () => {
 });
 
 btnGeneratePass.addEventListener("click", () => {
+  let passLength = inputPassLength.value;
   showPassword.value = "";
   let safetyBreak = 0;
   let pass = "";
@@ -59,6 +59,12 @@ btnGeneratePass.addEventListener("click", () => {
   }
 
   showPassword.value = pass;
+});
+
+copyBtn.addEventListener("click", () => {
+  if (showPassword.value) {
+    navigator.clipboard.writeText(showPassword.value);
+  }
 });
 
 inputPassLength.addEventListener("input", () => {
