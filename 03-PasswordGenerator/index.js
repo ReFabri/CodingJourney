@@ -24,12 +24,13 @@ window.addEventListener("change", () => {
       selectedOptions += options[checkboxes[i].id];
     }
   }
-  let currentStrength = selectedOptions.length + Number(inputPassLength.value);
+  let currentStrength =
+    selectedOptions.length + Number(inputPassLength.value * 3);
 
-  if (currentStrength > 100) {
+  if (currentStrength > 120) {
     strengthBar.style.width = "100%";
     strengthBar.style.backgroundColor = "#5fda66";
-  } else if (currentStrength > 50) {
+  } else if (currentStrength > 60) {
     strengthBar.style.width = "66%";
     strengthBar.style.backgroundColor = "#eeee55";
   } else {
