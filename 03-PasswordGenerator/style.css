@@ -54,10 +54,17 @@ body {
 }
 
 .password-strength {
-  height: 0.5rem;
-  background-color: rgb(13, 190, 13);
-  margin: 1rem 4rem;
-  border-radius: 0.2rem;
+  margin: 1.5rem 1rem 1rem 1rem;
+  width: calc(100% - 2rem);
+  height: 0.6rem;
+}
+
+.strength-bar {
+  width: 33%;
+  background-color: #ff6666;
+  height: 100%;
+  border-radius: 0.3rem;
+  transition: all 0.3s ease-in-out;
 }
 
 .password-length {
