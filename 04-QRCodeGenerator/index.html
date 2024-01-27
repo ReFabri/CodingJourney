@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"
+      integrity="sha512-CNgIRecGo7nphbeZ04Sc13ka07paqdeTu0WR1IM4kNcpmBAUSHSQX0FslNhTDadL4O5SAGapGt4FodqL8My0mA=="
+      defer
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="index.js" defer></script>
+    <title>QRCode Generator</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <input type="url" name="qrcodeUrl" id="qrcodeUrl" />
+      <div class="qrcode"></div>
+      <div class="options">
+        <input type="color" name="innerColor" id="innerColor" />
+        <input type="color" name="outerColor" id="outerColor" />
+        <select name="selectSize" id="selectSize"></select>
+        <button class="downloadBtn">Download</button>
+      </div>
+    </div>
+  </body>
+</html>
