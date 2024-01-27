@@ -20,3 +20,14 @@ body {
 .main-container {
   background-color: #fff;
 }
+
+.qrcode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 128px;
+  max-width: 512px;
+  min-height: 128px;
+  max-height: 512px;
+  overflow: hidden;
+}
