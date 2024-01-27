@@ -23,5 +23,9 @@ qrcodeUrl.addEventListener("input", () => {
     colorLight: lightColor.value,
     correctLevel: QRCode.CorrectLevel.M,
   };
-  const newQrCode = new QRCode(qrcode, qrcodeOptions);
+
+  new QRCode(qrcode, qrcodeOptions);
+  setTimeout(() => {
+    btnDownload.href = qrcode.querySelector("img").src;
+  }, 50);
 });
