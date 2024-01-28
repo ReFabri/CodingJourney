@@ -8,12 +8,6 @@
   color: #f8f8f8;
 }
 
-svg {
-  width: 1.5rem;
-  fill: #94c411;
-  padding-left: 0.5rem;
-}
-
 body {
   display: flex;
   align-items: center;
@@ -51,7 +45,7 @@ body {
   background-color: red;
   height: 180px;
   width: 80px;
-  border-radius: 100px;
+  border-radius: 30px;
   overflow: hidden;
   background: #000000;
   background: -webkit-linear-gradient(to left, #434343, #000000);
@@ -59,7 +53,7 @@ body {
 }
 
 .charge-level {
-  height: 65%;
+  height: 50%;
   width: 80px;
   background: #94c411;
   background: -webkit-linear-gradient(to right, #4b6406, #94c411, #ffe000);
@@ -79,4 +73,10 @@ body {
 .svg-wrapper {
   display: flex;
   flex-wrap: nowrap;
+}
+
+.charge-icon {
+  width: 1.5rem;
+  fill: #94c411;
+  padding-left: 0.5rem;
 }
