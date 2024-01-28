@@ -19,15 +19,72 @@ body {
 
 .main-container {
   background-color: #fff;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.3rem;
+}
+
+.title {
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+.qrcodeUrl-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+
+.qrcodeUrl-container input {
+  border: 1px solid #c0c0c0;
+  border-radius: 0.3rem;
+  font-size: 1.1rem;
+  padding: 0.2rem;
 }
 
 .qrcode {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 128px;
-  max-width: 512px;
   min-height: 128px;
-  max-height: 512px;
-  overflow: hidden;
+}
+
+.options {
+  padding: 0.5rem 0;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.options input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  width: 1.8rem;
+  height: 2rem;
+  border: none;
+  cursor: pointer;
+}
+
+.options input::-webkit-color-swatch {
+  border-radius: 1rem;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px #020929;
+}
+
+.options input::-moz-color-swatch {
+  border-radius: 1rem;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px #020929;
+}
+
+.options a {
+  text-decoration: none;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.2rem;
+  color: #fff;
+  background: #44a08d;
+  background: -webkit-linear-gradient(to right, #147779, #44a08d);
+  background: linear-gradient(to right, #147779, #44a08d);
+  font-weight: bold;
 }

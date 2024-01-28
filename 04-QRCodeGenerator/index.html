@@ -16,13 +16,17 @@
   </head>
   <body>
     <div class="main-container">
-      <input type="text" name="qrcodeUrl" id="qrcodeUrl" />
+      <h1 class="title">QR Code Generator</h1>
+      <div class="qrcodeUrl-container">
+        <label for="qrcodeUrl">Enter Text</label>
+        <input type="text" name="qrcodeUrl" id="qrcodeUrl" />
+      </div>
       <div class="qrcode"></div>
       <div class="options">
         <input type="color" name="lightColor" id="lightColor" value="#ffffff" />
         <input type="color" name="darkColor" id="darkColor" value="#000000" />
         <select name="selectSize" id="selectSize"></select>
-        <a href="" download class="downloadBtn">Download</a>
+        <a href="" download class="downloadBtn disabled">Download</a>
       </div>
     </div>
   </body>
