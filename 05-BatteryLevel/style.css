@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", "sans-serif";
+  color: #f8f8f8;
+}
+
+svg {
+  width: 1.5rem;
+  fill: #94c411;
+  padding-left: 0.5rem;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+  background: #0f2027;
+  background: -webkit-linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+}
+
+.main-container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  background-color: #1a1a1a;
+}
+
+.title {
+  padding-bottom: 1rem;
+  text-align: center;
+  color: #ddd;
+}
+
+.info-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.batteryPill-container {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+  background-color: red;
+  height: 180px;
+  width: 80px;
+  border-radius: 100px;
+  overflow: hidden;
+  background: #000000;
+  background: -webkit-linear-gradient(to left, #434343, #000000);
+  background: linear-gradient(to left, #434343, #000000);
+}
+
+.charge-level {
+  height: 65%;
+  width: 80px;
+  background: #94c411;
+  background: -webkit-linear-gradient(to right, #4b6406, #94c411, #ffe000);
+  background: linear-gradient(to right, #4b6406, #94c411, #ffe000);
+}
+
+.battery-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.battery-info h2 {
+  font-size: 2.5rem;
+}
+
+.svg-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+}
