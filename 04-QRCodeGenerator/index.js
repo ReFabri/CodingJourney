@@ -28,4 +28,10 @@ qrcodeUrl.addEventListener("input", () => {
   setTimeout(() => {
     btnDownload.href = qrcode.querySelector("img").src;
   }, 50);
+
+  if (!qrcodeUrl.value.trim()) {
+    btnDownload.classList.add("disabled");
+  } else {
+    btnDownload.classList.remove("disabled");
+  }
 });

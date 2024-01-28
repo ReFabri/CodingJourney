@@ -88,3 +88,8 @@ body {
   background: linear-gradient(to right, #147779, #44a08d);
   font-weight: bold;
 }
+
+.disabled {
+  pointer-events: none;
+  cursor: default;
+}
