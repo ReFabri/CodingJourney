@@ -1,5 +1,8 @@
 const tiles = document.querySelectorAll(".tile");
 const btnRestart = document.querySelector(".btnRestart");
+const modal = document.querySelector(".modal");
+const h2Winner = document.querySelector(".modal h2");
+const btnCloseModal = document.querySelector(".modal button");
 
 let flip = true;
 const tilesArray = new Array(8);
@@ -7,12 +10,16 @@ tilesArray.fill(null);
 
 tiles.forEach((tile, i) => {
   tile.addEventListener("click", () => {
-    if (flip) {
-      tile.innerText = "X";
-      tilesArray[i] = "X";
+    if (tile.innerText === "X" || tile.innerText === "O") {
+      flip = !flip;
     } else {
-      tile.innerText = "O";
-      tilesArray[i] = "O";
+      if (flip) {
+        tile.innerText = "X";
+        tilesArray[i] = "X";
+      } else {
+        tile.innerText = "O";
+        tilesArray[i] = "O";
+      }
     }
     flip = !flip;
     printWinner();
@@ -21,12 +28,20 @@ tiles.forEach((tile, i) => {
 
 btnRestart.addEventListener("click", startNewGame);
 
+btnCloseModal.addEventListener("click", startNewGame);
+
 function startNewGame() {
+  modal.style.display = "none";
   tiles.forEach((tile) => {
     tile.innerText = "";
   });
   flip = true;
   tilesArray.fill(null);
+}
+
+function GameOver(winner) {
+  h2Winner.innerText = `${winner} Wins !`;
+  modal.style.display = "flex";
 }
 
 function checkForWinner() {
@@ -58,9 +73,9 @@ function checkForWinner() {
 }
 
 function printWinner() {
-  winner = checkForWinner();
+  let winner = checkForWinner();
   if (winner) {
-    alert(`${winner} wins!!!`);
-    startNewGame();
+    GameOver(winner);
+    return winner;
   }
 }

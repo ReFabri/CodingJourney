@@ -49,18 +49,18 @@ body {
 }
 
 .btn {
-  padding: 0.5rem;
   margin: 2rem;
   border: 3px solid #555;
   background-color: rgb(241, 230, 215);
   color: #333;
   font-size: 1rem;
   border-radius: 0.3rem;
+  transition: background-color 300ms ease;
 }
 
 .btnRestart {
+  padding: 0.5rem;
   width: 356px;
-  transition: background-color 300ms ease;
 }
 
 .btn:hover {
@@ -68,8 +68,8 @@ body {
 }
 
 .modal {
+  display: none;
   position: absolute;
-  display: flex;
   align-items: center;
   justify-content: center;
   padding: 5rem;
@@ -87,10 +87,18 @@ body {
   justify-content: center;
   flex-direction: column;
   background-color: antiquewhite;
-  width: 400px;
-  height: 200px;
   border-radius: 0.5rem;
 }
 
+.winMessage h3 {
+  margin-top: 3rem;
+}
+
+.winMessage h2 {
+  font-size: 2rem;
+  margin: 1rem 3rem 1rem 3rem;
+}
+
 .winMessage button {
+  padding: 0.5rem 2rem;
 }
