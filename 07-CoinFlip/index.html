@@ -4,20 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
     <title>Coin Flip</title>
   </head>
   <body class="center">
     <div class="main-container">
       <h1 class="title">Coin Flip</h1>
       <div class="container-top">
-        <p>Heads: 0</p>
-        <p>Tails: 0</p>
+        <div>
+          <p>Heads:</p>
+          <h2>0</h2>
+        </div>
+        <div>
+          <p>Tails:</p>
+          <h2>0</h2>
+        </div>
       </div>
-      <div class="scene center">
-        <div class="card center">
-          <div class="card__face card__face--front center">Heads</div>
-          <div class="card__face card__face--back center">Heads</div>
+      <div class="container-coin">
+        <div class="coin">
+          <div class="coin__face heads center">
+            <div class="inner-coin center">Heads</div>
+          </div>
+          <div class="coin__face tails center">
+            <div class="inner-coin center">Tails</div>
+          </div>
         </div>
       </div>
       <div class="container-bottom">
