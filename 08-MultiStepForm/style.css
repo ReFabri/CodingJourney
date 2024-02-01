@@ -6,3 +6,29 @@
   box-sizing: border-box;
   font-family: "Poppins", "sans-serif";
 }
+
+body {
+  position: relative;
+  background-color: dodgerblue;
+  height: 100dvh;
+}
+
+.main-container {
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 400px;
+}
+
+.wrapper-form {
+  display: flex;
+  width: 900px;
+}
+
+.screen {
+  width: 300px;
+  height: 400px;
+}

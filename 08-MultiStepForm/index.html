@@ -3,18 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" defer></script>
     <title>Multi Step Form</title>
   </head>
   <body>
     <div class="main-container">
-      <form action="">
-        <div class="screen">
+      <form class="wrapper-form" action="">
+        <div class="screen" >
           <h2>Create Account</h2>
           <input type="email" name="email" id="email">
           <input type="password" name="password" id="password">
           <input type="password" name="confirmPassword" id="confirmPassword">
           <div>
-            <button class="btn"></button>
+            <button class="btn btn-next" type="button">Next</button>
           </div>
         </div>
         <div class="screen">
@@ -23,8 +25,8 @@
           <input type="text" name="lastName" id="lastName">
           <input type="date" name="birthDate" id="birthDate">
           <div>
-            <button class="btn"></button>
-            <button class="btn"></button>
+            <button class="btn btn-back" type="button">Back</button>
+            <button class="btn btn-next" type="button">Next</button>
           </div>
         </div>
         <div class="screen">
@@ -33,7 +35,8 @@
           <input type="text" name="mainPetName" id="mainPetName">
           <input type="text" name="favColor" id="favColor">
           <div>
-            <button class="btn"></button>
+            <button class="btn btn-back" type="button">Back</button>
+            <button class="btn btn-submit" type="submit">Submit</button>
           </div>
         </div>
       </div>
