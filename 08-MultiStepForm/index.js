@@ -1,23 +1,31 @@
 const form = document.querySelector(".wrapper-form");
-const btnsNext = document.querySelectorAll(".btn-next");
-const btnsBack = document.querySelectorAll(".btn-back");
+const buttonsNext = document.querySelectorAll(".btn-next");
+const buttonsBack = document.querySelectorAll(".btn-back");
 const btnSubmit = document.querySelector(".btn-submit");
+const steps = document.querySelectorAll(".step");
 
-// const formPos = window.getComputedStyle(form)
-// console.log(formPos.getPropertyValue("transform"));
+const positions = {
+  screen: [0, -300, -600],
+  bar2: [20, 100, 100],
+  bar3: [40, 120, 200],
+};
 
-btnsNext.forEach((btnNext, i) => {
-  const posX = (i + 1) * 300 * -1;
-  btnNext.addEventListener("click", changePage(posX));
+let currPage = 0;
+
+buttonsNext.forEach((btnNext, i) => {
+  btnNext.addEventListener("click", () => {
+    changePage(i + 1);
+  });
 });
 
-btnsBack.forEach((btnBack, i) => {
-  const posX = i * 300 * -1;
-  btnBack.addEventListener("click", changePage(posX));
+buttonsBack.forEach((btnNext, i) => {
+  btnNext.addEventListener("click", () => {
+    changePage(i);
+  });
 });
 
-function changePage(translateAmount) {
-  return () => {
-    form.style.transform = `translateX(${translateAmount}px)`;
-  };
+function changePage(page) {
+  form.style.transform = `translateX(${positions.screen[page]}px)`;
+  steps[1].style.left = `${positions.bar2[page]}px`;
+  steps[2].style.left = `${positions.bar3[page]}px`;
 }

@@ -3,29 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script src="index.js" defer></script>
     <title>Multi Step Form</title>
   </head>
   <body>
     <div class="main-container">
+      <div class="steps-bar">
+        <div class="step step-1">Step 1</div>
+        <div class="step step-2">Step 2</div>
+        <div class="step step-3">Step 3</div>
+      </div>
       <form class="wrapper-form" action="">
-        <div class="screen" >
+        <div class="screen">
           <h2>Create Account</h2>
-          <input type="email" placeholder="Email" name="email" id="email">
-          <input type="password" placeholder="Password" name="password" id="password">
-          <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword">
+          <input type="email" placeholder="Email" name="email" id="email" />
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            id="password"
+          />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            name="confirmPassword"
+            id="confirmPassword"
+          />
           <div class="btn-wrapper">
             <button class="btn btn-next" type="button">Next</button>
           </div>
         </div>
         <div class="screen">
           <h2>Personal Info</h2>
-          <input type="text" placeholder="First name" name="firstName" id="firstName">
-          <input type="text" placeholder="Last name" name="lastName" id="lastName">
+          <input
+            type="text"
+            placeholder="First name"
+            name="firstName"
+            id="firstName"
+          />
+          <input
+            type="text"
+            placeholder="Last name"
+            name="lastName"
+            id="lastName"
+          />
           <div class="birthDate-wrapper">
             <label for="birthDate">Birth date: </label>
-            <input type="date" name="birthDate" id="birthDate">
+            <input type="date" name="birthDate" id="birthDate" />
           </div>
           <div class="btn-wrapper">
             <button class="btn btn-back" type="button">Back</button>
@@ -34,15 +59,30 @@
         </div>
         <div class="screen">
           <h2>Additional Info</h2>
-          <input type="number" placeholder="Number of Pets" name="numPets" id="numPets">
-          <input type="text" placeholder="Favorite Pet" name="mainPetName" id="mainPetName">
-          <input type="text" placeholder="Favorite Color" name="favColor" id="favColor">
+          <input
+            type="number"
+            placeholder="Number of Pets"
+            name="numPets"
+            id="numPets"
+          />
+          <input
+            type="text"
+            placeholder="Favorite Pet"
+            name="mainPetName"
+            id="mainPetName"
+          />
+          <input
+            type="text"
+            placeholder="Favorite Color"
+            name="favColor"
+            id="favColor"
+          />
           <div class="btn-wrapper">
             <button class="btn btn-back" type="button">Back</button>
             <button class="btn btn-submit" type="submit">Submit</button>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </body>
 </html>

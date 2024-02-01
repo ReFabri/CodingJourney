@@ -8,17 +8,16 @@
 }
 
 body {
-  position: relative;
   background-color: dodgerblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100dvh;
 }
 
 .main-container {
+  position: relative;
   background-color: #fff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 300px;
   height: 400px;
   overflow: hidden;
@@ -28,7 +27,7 @@ body {
 .wrapper-form {
   display: flex;
   width: 900px;
-  transition: all 200ms ease-in-out;
+  transition: all 300ms ease-in-out;
 }
 
 .screen {
@@ -37,7 +36,6 @@ body {
   align-items: center;
   justify-content: center;
   width: 300px;
-  height: 400px;
 }
 
 .screen h2 {
@@ -80,4 +78,62 @@ body {
   cursor: pointer;
   font-weight: bold;
   border-radius: 2rem;
+}
+
+.steps-bar {
+  width: 300px;
+  height: 2rem;
+  position: relative;
+}
+
+.step {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 2rem;
+  background-color: #0c4d97;
+  color: #fff;
+  font-size: 0.8rem;
+  transition: left 300ms ease-in-out;
+}
+
+.step::after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: -1rem;
+  top: 0;
+  border-top: 1rem solid transparent;
+  border-bottom: 1rem solid transparent;
+  border-left: 1rem solid #0c4d97;
+}
+
+.step-1 {
+  z-index: 2;
+  top: 0;
+  left: 0;
+}
+
+.step-2 {
+  left: 20px;
+  background-color: #1565c0;
+  z-index: 1;
+}
+
+.step-2::after {
+  border-left: 1rem solid #1565c0;
+}
+
+.step-3 {
+  left: 40px;
+  background-color: #2d82e4;
+}
+
+.step-3::after {
+  border-left: 1rem solid #2d82e4;
 }
