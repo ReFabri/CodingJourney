@@ -19,6 +19,5 @@ btnsBack.forEach((btnBack, i) => {
 function changePage(translateAmount) {
   return () => {
     form.style.transform = `translateX(${translateAmount}px)`;
-    console.log(translateAmount);
   };
 }
