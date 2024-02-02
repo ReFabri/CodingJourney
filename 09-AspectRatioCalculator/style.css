@@ -66,3 +66,15 @@ body {
   border: 2px solid #ccc;
   border-radius: 0.5rem;
 }
+
+.checkbox-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-div input[type="radio"] {
+  margin: 0.6rem;
+  width: 1rem;
+  height: 1rem;
+}
