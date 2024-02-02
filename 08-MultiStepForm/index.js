@@ -10,8 +10,6 @@ const positions = {
   bar3: [40, 120, 200],
 };
 
-let currPage = 0;
-
 buttonsNext.forEach((btnNext, i) => {
   btnNext.addEventListener("click", () => {
     changePage(i + 1);
