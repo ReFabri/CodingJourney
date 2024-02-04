@@ -1,16 +1,48 @@
-//=================================================
-const apiKey = "";
-//=================================================
+const apiKey = prompt("Enter your api key:");
+
+const searchBtn = document.querySelector(".search-btn");
+const weatherImage = document.querySelector(".img-wrapper img");
+const temp = document.querySelector(".temperature-wrapper h2");
+const tempInfo = document.querySelector(".temperature-info h2");
+const [humidVal, windVal] = document.querySelectorAll(".moreInfo h3");
 
 const openWeatherAPI = `https://api.openweathermap.org/data/2.5/weather?q=london&units=metric&appid=${apiKey}`;
 
-const getData = async () => {
+searchBtn.addEventListener("click", () => {
+  getWeatherData();
+});
+
+async function getWeatherData() {
   try {
     const data = await fetch(openWeatherAPI);
     const json = await data.json();
-    console.log(json);
+    if (json) {
+      changePageInfo(json);
+      changeImage(json.weather[0].main);
+    }
   } catch (error) {
     console.log(error);
   }
-};
-getData();
+}
+
+function changePageInfo(json) {
+  temp.innerText = json.main.temp;
+  tempInfo.innerText = json.weather[0].description;
+  humidVal.innerText = `${json.main.humidity}%`;
+  windVal.innerText = `${json.wind.speed}Km/h`;
+}
+
+function changeImage(weather) {
+  const weathers = {
+    Clear: "./images/clear.png",
+    Clouds: "./images/cloud.png",
+    Haze: "./images/mist.png",
+    Rain: "./images/rain.png",
+    Snow: "./images/snow.png",
+  };
+  if (Object.keys(weathers).includes(weather)) {
+    weatherImage.src = weathers[weather];
+  } else {
+    weatherImage.src = "";
+  }
+}
