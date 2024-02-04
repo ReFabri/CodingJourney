@@ -5,16 +5,21 @@ const searchInput = document.querySelector(".search-wrapper input");
 const weatherImage = document.querySelector(".img-wrapper img");
 const temp = document.querySelector(".temperature-wrapper h2");
 const tempInfo = document.querySelector(".temperature-info h2");
+const weatherBody = document.querySelector(".body-wrapper");
 const [humidVal, windVal] = document.querySelectorAll(".moreInfo h3");
 
 searchInput.addEventListener("input", () => {
   searchInput.value = searchInput.value.toUpperCase();
+  weatherBody.style.height = "0";
 });
 
 searchBtn.addEventListener("click", async () => {
   const weatherData = await getWeatherData();
   changePageInfo(weatherData);
   changeImage(weatherData.weather[0].main);
+  if (weatherData) {
+    weatherBody.style.height = "480px";
+  }
 });
 
 async function getWeatherData() {
@@ -46,11 +51,15 @@ function changeImage(weather) {
     Clouds: "./images/cloud.png",
     Haze: "./images/mist.png",
     Rain: "./images/rain.png",
+    Drizzle: "./images/rain.png",
+    Thunderstorm: "./images/rain.png",
     Snow: "./images/snow.png",
   };
   if (Object.keys(weathers).includes(weather)) {
+    weatherImage.style.height = "250px";
     weatherImage.src = weathers[weather];
   } else {
+    weatherImage.style.height = "0";
     weatherImage.src = "";
   }
 }

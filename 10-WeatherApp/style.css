@@ -109,3 +109,13 @@ body {
   font-size: 2rem;
   padding-right: 0.8rem;
 }
+
+.body-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 0;
+  overflow: hidden;
+  transition: all 500ms ease-in-out;
+}
