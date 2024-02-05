@@ -9,39 +9,41 @@
     <title>Movie Guide</title>
   </head>
   <body>
-    <div class="main-container">
-      <div class="search-container">
+    <div class="main-container flex">
+      <div class="search-container flex">
         <input type="text" />
         <button>search</button>
       </div>
       <div class="movie-container">
-        <div class="movie-data">
+        <div class="movie-data flex">
           <div class="img-wrapper">
-            <img src="" alt="movie poster" />
+            <img
+              src="https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
+              alt="movie poster"
+            />
           </div>
-          <div class="data-wrapper">
+          <div class="data-wrapper flex">
             <h1>Movie Title</h1>
-            <div>
+            <div class="rating flex">
               <h2>⭐</h2>
               <h2>9.0</h2>
             </div>
-            <div>
-              <h3>R</h3>
-              <h3>2020</h3>
-              <h3>120 min</h3>
+            <div class="info flex">
+              <h3 class="text-light">R</h3>
+              <h3 class="text-light">2020</h3>
+              <h3 class="text-light">120 min</h3>
             </div>
             <div class="genres">
               <!-- add genre cards here -->
             </div>
           </div>
-          <div class="plot-cast">
-            <h2>Plot:</h2>
-            <p>plot information about the movie goes here</p>
-            <h2>Cast:</h2>
-            <p>cast of actors and actresses goes here</p>
-          </div>
         </div>
-        <div class="movie-info"></div>
+        <div class="movie-info">
+          <h2>Plot:</h2>
+          <p class="text-light">plot information about the movie goes here</p>
+          <h2>Cast:</h2>
+          <p class="text-light">cast of actors and actresses goes here</p>
+        </div>
       </div>
     </div>
   </body>
