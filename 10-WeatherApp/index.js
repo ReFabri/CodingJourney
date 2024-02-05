@@ -1,5 +1,3 @@
-const apiKey = prompt("Enter your api key:");
-
 const searchBtn = document.querySelector(".search-btn");
 const searchInput = document.querySelector(".search-wrapper input");
 const weatherImage = document.querySelector(".img-wrapper img");
