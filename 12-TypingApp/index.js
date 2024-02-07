@@ -1,5 +1,5 @@
 const [time, mistakes, accuracy, speed] = document.querySelectorAll("span");
-const [divCopy, divWrite] = document.querySelectorAll(".textBoxes");
+const [testCopy, testWrite] = document.querySelectorAll(".textBoxes");
 const btnWrapper = document.querySelector(".btn-wrapper");
 const startBtn = document.querySelector(".startBtn");
 const resultWrapper = document.querySelector(".result-wrapper");
@@ -14,3 +14,12 @@ const quotes = [
   "I have learned that as long as I hold fast to my beliefs and values - and follow my own moral compass - then the only expectations I need to live up to are my own.",
   "It is very important to generate a good attitude, a good heart, as much as possible. From this, happiness in both the short term and the long term for both yourself and others will come.",
 ];
+let quote = "";
+
+startBtn.addEventListener("click", () => {
+  testWrite.value = "";
+  quote = quotes[Math.floor(Math.random() * quotes.length)];
+  testCopy.innerText = quote;
+});
+
+testWrite.addEventListener("input", () => {});
