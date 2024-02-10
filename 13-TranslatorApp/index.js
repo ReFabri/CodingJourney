@@ -7,20 +7,14 @@ const outputLanguageSelect = document.getElementById("outputLanguageSelect");
 Object.entries(countries).forEach((countryArr) => {
   if (countryArr[0] === "auto") {
     inputLanguageSelect.appendChild(createOption(countryArr, true));
-    outputLanguageSelect.appendChild(createOption(countryArr, false));
   } else if (countryArr[0] === navigator.language) {
-    inputLanguageSelect.appendChild(createOption(countryArr, false));
+    inputLanguageSelect.appendChild(createOption(countryArr));
     outputLanguageSelect.appendChild(createOption(countryArr, true));
   } else {
-    inputLanguageSelect.appendChild(createOption(countryArr, false));
-    outputLanguageSelect.appendChild(createOption(countryArr, false));
+    inputLanguageSelect.appendChild(createOption(countryArr));
+    outputLanguageSelect.appendChild(createOption(countryArr));
   }
 });
-
-const inputLanguage =
-  inputLanguageSelect.options[inputLanguageSelect.selectedIndex].value;
-const outputLanguage =
-  outputLanguageSelect.options[outputLanguageSelect.selectedIndex].value;
 
 function createOption(countryArr, isSelected) {
   const option = document.createElement("option");
@@ -33,6 +27,11 @@ function createOption(countryArr, isSelected) {
 }
 
 async function translateText() {
+  const inputLanguage =
+    inputLanguageSelect.options[inputLanguageSelect.selectedIndex].value;
+  const outputLanguage =
+    outputLanguageSelect.options[outputLanguageSelect.selectedIndex].value;
+
   outputText.innerText = "";
   const inputPhrases = getPhrases();
   for (phrase of inputPhrases) {

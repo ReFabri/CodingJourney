@@ -13,10 +13,11 @@ body {
   align-items: center;
   justify-content: center;
   background-color: rgb(72, 119, 206);
-  margin-top: 1rem;
+  margin-top: 3rem;
 }
 
 .main-container {
+  min-width: 600px;
   padding: 1rem;
   background-color: #fff;
   border-radius: 0.3rem;
@@ -25,14 +26,12 @@ body {
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
-.main-container > div:first-child {
+.text-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-}
-
-.main-container > div:nth-child(2) {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  border: 2px solid #ddd;
+  border-start-start-radius: 0.5rem;
+  border-start-end-radius: 0.5rem;
 }
 
 .textArea {
@@ -42,13 +41,48 @@ body {
   height: 100%;
   min-height: 300px;
   resize: none;
-  border: 1px solid #ccc;
+  border: none;
+  background-color: transparent;
   padding: 0.5rem;
+}
+
+.text-wrapper div {
+  border-left: 2px solid #ddd;
+}
+
+.options-wrapper {
+  display: grid;
+  grid-template-columns: 5fr 1fr 5fr;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ddd;
+  border-top: none;
+  padding: 0.5rem 0;
+  border-end-start-radius: 0.5rem;
+  border-end-end-radius: 0.5rem;
+}
+
+.options-wrapper div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.options-wrapper i {
+  display: block;
+  padding: 0.5rem 0.5rem;
+  font-size: 1.2rem;
+  color: #888;
+}
+.bar {
+  margin: 0 0.5rem;
+  height: 1rem;
+  width: 2px;
+  background-color: #ddd;
 }
 
 select {
   text-align: center;
-  margin: 1rem 0;
   border: none;
   background-color: transparent;
   padding: 0.2rem;
@@ -56,11 +90,13 @@ select {
 }
 
 #translateBtn {
+  margin-top: 1rem;
   background-color: rgb(72, 119, 206);
   color: #fff;
   width: 100%;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   padding: 0.5rem;
   cursor: pointer;
+  border-radius: 0.5rem;
 }
