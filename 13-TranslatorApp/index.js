@@ -1,16 +1,55 @@
-async function translateText() {
-  const inputText = document.getElementById("inputText").value;
-  const languageSelect = document.getElementById("languageSelect");
-  const targetLanguage =
-    languageSelect.options[languageSelect.selectedIndex].value;
+const inputText = document.getElementById("inputText");
+const outputText = document.getElementById("outputText");
+const translateBtn = document.getElementById("translateBtn");
+const inputLanguageSelect = document.getElementById("inputLanguageSelect");
+const outputLanguageSelect = document.getElementById("outputLanguageSelect");
 
-  const response = await fetch(
-    `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLanguage}&dt=t&q=${encodeURI(
-      inputText
-    )}`
-  );
-  const data = await response.json();
-  const translatedText = data[0][0][0];
+Object.entries(countries).forEach((countryArr) => {
+  if (countryArr[0] === "auto") {
+    inputLanguageSelect.appendChild(createOption(countryArr, true));
+    outputLanguageSelect.appendChild(createOption(countryArr, false));
+  } else if (countryArr[0] === navigator.language) {
+    inputLanguageSelect.appendChild(createOption(countryArr, false));
+    outputLanguageSelect.appendChild(createOption(countryArr, true));
+  } else {
+    inputLanguageSelect.appendChild(createOption(countryArr, false));
+    outputLanguageSelect.appendChild(createOption(countryArr, false));
+  }
+});
 
-  document.getElementById("outputText").innerText = translatedText;
+const inputLanguage =
+  inputLanguageSelect.options[inputLanguageSelect.selectedIndex].value;
+const outputLanguage =
+  outputLanguageSelect.options[outputLanguageSelect.selectedIndex].value;
+
+function createOption(countryArr, isSelected) {
+  const option = document.createElement("option");
+  option.value = countryArr[0];
+  option.innerText = countryArr[1];
+  if (isSelected) {
+    option.selected = true;
+  }
+  return option;
 }
+
+async function translateText() {
+  outputText.innerText = "";
+  const inputPhrases = getPhrases();
+  for (phrase of inputPhrases) {
+    const response = await fetch(
+      `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${inputLanguage}&tl=${outputLanguage}&dt=t&q=${encodeURI(
+        phrase
+      )}`
+    );
+    const data = await response.json();
+    const translatedPhrase = data[0][0][0] + "\n";
+    outputText.innerText += translatedPhrase;
+  }
+}
+
+function getPhrases() {
+  const phrases = inputText.value.split("\n").map((phrase) => phrase.trim());
+  return phrases;
+}
+
+translateBtn.addEventListener("click", translateText);
