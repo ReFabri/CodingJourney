@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", "sans-serif";
+  color: #fff;
 }
 
 body {
@@ -12,7 +13,6 @@ body {
 }
 
 .main-container {
-  background-color: #fff;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -22,6 +22,48 @@ body {
 }
 
 .card {
+  background-color: #1a201a;
   display: grid;
-  grid-template-columns: 1fr 6fr 4fr;
+  grid-template-columns: 1fr 5fr 3fr;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+  gap: 1rem;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card div:nth-child(2) h2 {
+  display: inline;
+}
+
+.card div:nth-child(2) span {
+  color: #aaa;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.card div:last-child {
+  text-align: right;
+  padding-right: 1rem;
+}
+
+.card div:last-child h2 {
+  color: #31d92e;
+}
+
+.card div:last-child h3 {
+  color: #aaa;
+  font-size: 1rem;
+}
+
+.card-red {
+  background-color: #241a1c;
+}
+
+.card-red div:last-child h2 {
+  color: #de493a;
 }
