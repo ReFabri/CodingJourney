@@ -5,16 +5,10 @@ async function fetchData() {
     "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Ccardano%2Cdogecoin%2Cethereum%2Clitecoin%2Ctether&vs_currencies=usd&include_24hr_vol=true"
   );
   const data = await response.json();
-
-  const entries = Object.entries(data);
-
-  entries.forEach((crypto) => {
-    const card = createCard(crypto);
-    mainContainer.appendChild(card);
-  });
+  createCards(data);
 }
 
-function createCard(arr) {
+function createSingleCard(arr) {
   const divCard = document.createElement("div");
   const img = document.createElement("img");
   const divCrypto = document.createElement("div");
@@ -42,6 +36,15 @@ function createCard(arr) {
   divNum.appendChild(h3Num);
 
   return divCard;
+}
+
+function createCards(data) {
+  const entries = Object.entries(data);
+
+  entries.forEach((crypto) => {
+    const card = createSingleCard(crypto);
+    mainContainer.appendChild(card);
+  });
 }
 
 fetchData();
