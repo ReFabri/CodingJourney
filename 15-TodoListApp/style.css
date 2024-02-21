@@ -63,7 +63,7 @@ nav button {
   transition: all 0.3s ease-out;
 }
 
-.todo div .expand {
+.todo div .expandOptions {
   height: 4rem;
   padding: 0.5rem;
 }

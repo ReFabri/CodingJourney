@@ -4,10 +4,6 @@ const expandOptions = document.querySelector(".todo div > i");
 
 const idCounter = 0;
 
-expandOptions.addEventListener("click", (e) => {
-  e.target.nextElementSibling.classList.toggle("expand");
-});
-
 todoInput.addEventListener("keyup", (e) => {
   if (e.key === "Enter" && todoInput.value.trim()) {
     const newTodo = createTodo(idCounter, todoInput.value);
@@ -38,6 +34,12 @@ function createTodo(todoId, todoText) {
 
   const ellipsisIcon = document.createElement("i");
   ellipsisIcon.classList.add("fa-solid", "fa-ellipsis");
+  ellipsisIcon.addEventListener("click", (e) => {
+    document.querySelectorAll(".todo div ul").forEach((menu) => {
+      menu.classList.remove("expandOptions");
+    });
+    e.target.nextElementSibling.classList.add("expandOptions");
+  });
 
   div.appendChild(ellipsisIcon);
 
