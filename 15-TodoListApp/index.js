@@ -1,17 +1,13 @@
-const [btnAll, btnPending, btnCompleted, btnClear] =
-  document.querySelectorAll("nav button");
-const todoInput = document.querySelector(".main-container > input");
+const todoInput = document.querySelector(".todo-input");
 
-const todos = document.querySelector("#todos");
+const expandOptions = document.querySelector(".todo div > i");
 
-btnAll.addEventListener("click", () => {
-  todos.style.justifyContent = "left";
+expandOptions.addEventListener("click", (e) => {
+  e.target.nextElementSibling.classList.toggle("expand");
 });
 
-btnPending.addEventListener("click", () => {
-  todos.style.justifyContent = "center";
-});
-
-btnCompleted.addEventListener("click", () => {
-  todos.style.justifyContent = "right";
+todoInput.addEventListener("keyup", (e) => {
+  if (e.key === "Enter") {
+    console.log("Pressed enter");
+  }
 });

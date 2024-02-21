@@ -33,32 +33,37 @@ nav button {
   background-color: transparent;
 }
 
-#todos {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 100%;
-  overflow-x: hidden;
-  width: 100%;
-}
-
-#todos li {
-  font-size: 0.7rem;
+.todo {
   display: flex;
-  gap: 0.2rem;
+  align-items: center;
+  justify-content: space-between;
 }
 
-#todos input[type="checkbox"] {
-  width: 0.6rem;
+.todo label {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-#todoAll {
-  display: block;
+.todo div {
+  position: relative;
 }
 
-#todoPending {
-  display: block;
+.todo div ul {
+  border-radius: 0.5rem;
+  background-color: #fff;
+  position: absolute;
+  width: 6rem;
+  height: 0;
+  top: 0;
+  left: 1.2rem;
+  padding: 0 0.5rem;
+  overflow: hidden;
+  transition: all 0.3s ease-out;
 }
 
-#todoCompleted {
-  display: block;
+.todo div .expand {
+  height: 4rem;
+  padding: 0.5rem;
 }
