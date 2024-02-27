@@ -34,11 +34,18 @@ function createTodo(todoId, todoText) {
 
   const ellipsisIcon = document.createElement("i");
   ellipsisIcon.classList.add("fa-solid", "fa-ellipsis");
+
   ellipsisIcon.addEventListener("click", (e) => {
-    document.querySelectorAll(".todo div ul").forEach((menu) => {
+    const menu = e.target.nextElementSibling;
+
+    if (menu.classList.contains("expandOptions")) {
       menu.classList.remove("expandOptions");
-    });
-    e.target.nextElementSibling.classList.add("expandOptions");
+    } else {
+      document.querySelectorAll(".todo div ul").forEach((menu) => {
+        menu.classList.remove("expandOptions");
+      });
+      e.target.nextElementSibling.classList.add("expandOptions");
+    }
   });
 
   div.appendChild(ellipsisIcon);
