@@ -3,12 +3,20 @@ const todos = document.querySelector(".todos");
 const expandOptions = document.querySelector(".todo div > i");
 
 let idCounter = 0;
+let editMode = false;
+let editId = "";
 
 todoInput.addEventListener("keyup", (e) => {
   if (e.key === "Enter" && todoInput.value.trim()) {
-    const newTodo = createTodo(idCounter, todoInput.value);
-    todos.appendChild(newTodo);
-    idCounter++;
+    if (!editMode) {
+      const newTodo = createTodo(idCounter, todoInput.value);
+      todos.appendChild(newTodo);
+      idCounter++;
+    } else {
+      todos.querySelector(`#${editId} p`).textContent = todoInput.value;
+      editMode = false;
+    }
+    todoInput.value = "";
   }
 });
 
@@ -36,35 +44,20 @@ function createTodo(id, todoText) {
 
   const ellipsisIcon = document.createElement("i");
   ellipsisIcon.classList.add("fa-solid", "fa-ellipsis");
-
-  ellipsisIcon.addEventListener("click", (e) => {
-    const menu = e.target.nextElementSibling;
-    if (menu.classList.contains("expandOptions")) {
-      menu.classList.remove("expandOptions");
-    } else {
-      document.querySelectorAll(".todo div ul").forEach((menu) => {
-        menu.classList.remove("expandOptions");
-      });
-      e.target.nextElementSibling.classList.add("expandOptions");
-    }
-  });
-
+  todoShowHideMenu(ellipsisIcon);
   div.appendChild(ellipsisIcon);
 
   const ul = document.createElement("ul");
 
   const editLi = document.createElement("li");
+  editCurrentTodo(editLi);
   const editIcon = document.createElement("i");
   editIcon.classList.add("fa-solid", "fa-pen-to-square");
   editLi.appendChild(editIcon);
   editLi.appendChild(document.createTextNode("Edit"));
 
   const deleteLi = document.createElement("li");
-  deleteLi.addEventListener("click", function () {
-    const idToRemove = this.closest(".todo").id;
-    const todoToRemove = document.getElementById(idToRemove);
-    todos.removeChild(todoToRemove);
-  });
+  deleteCurrentTodo(deleteLi);
   const deleteIcon = document.createElement("i");
   deleteIcon.classList.add("fa-solid", "fa-trash");
   deleteLi.appendChild(deleteIcon);
@@ -78,4 +71,36 @@ function createTodo(id, todoText) {
   todoItem.appendChild(div);
 
   return todoItem;
+}
+
+function todoShowHideMenu(el) {
+  el.addEventListener("click", (e) => {
+    const menu = e.target.nextElementSibling;
+    if (menu.classList.contains("expandOptions")) {
+      menu.classList.remove("expandOptions");
+    } else {
+      document.querySelectorAll(".todo div ul").forEach((menu) => {
+        menu.classList.remove("expandOptions");
+      });
+      e.target.nextElementSibling.classList.add("expandOptions");
+    }
+  });
+}
+
+function deleteCurrentTodo(el) {
+  el.addEventListener("click", function () {
+    const idToRemove = this.closest(".todo").id;
+    const todoToRemove = document.getElementById(idToRemove);
+    todos.removeChild(todoToRemove);
+  });
+}
+
+function editCurrentTodo(el) {
+  el.addEventListener("click", function () {
+    const idToEdit = this.closest(".todo").id;
+    todoInput.focus();
+    editMode = true;
+    editId = idToEdit;
+    el.parentElement.classList.remove("expandOptions");
+  });
 }
