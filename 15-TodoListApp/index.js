@@ -2,25 +2,27 @@ const todoInput = document.querySelector(".todo-input");
 const todos = document.querySelector(".todos");
 const expandOptions = document.querySelector(".todo div > i");
 
-const idCounter = 0;
+let idCounter = 0;
 
 todoInput.addEventListener("keyup", (e) => {
   if (e.key === "Enter" && todoInput.value.trim()) {
     const newTodo = createTodo(idCounter, todoInput.value);
     todos.appendChild(newTodo);
+    idCounter++;
   }
 });
 
-function createTodo(todoId, todoText) {
+function createTodo(id, todoText) {
   const todoItem = document.createElement("li");
+  todoItem.id = `todo_${id}`;
   todoItem.classList.add("todo");
 
   const label = document.createElement("label");
-  label.setAttribute("for", todoId);
+  label.setAttribute("for", `check_${id}`);
 
   const input = document.createElement("input");
   input.type = "checkbox";
-  input.id = todoId;
+  input.id = `check_${id}`;
 
   const p = document.createElement("p");
   p.textContent = todoText;
@@ -37,7 +39,6 @@ function createTodo(todoId, todoText) {
 
   ellipsisIcon.addEventListener("click", (e) => {
     const menu = e.target.nextElementSibling;
-
     if (menu.classList.contains("expandOptions")) {
       menu.classList.remove("expandOptions");
     } else {

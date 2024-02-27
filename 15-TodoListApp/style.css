@@ -22,6 +22,37 @@ body {
   border-radius: 0.5rem;
 }
 
+.todo-input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 2px solid #888;
+  padding: 0.2rem;
+  font-size: 1.2rem;
+  border-radius: 0.2rem;
+}
+
+.todo-input-wrapper:focus-within {
+  border: 2px solid #d18e10;
+  background-color: rgba(255, 244, 225, 0.3);
+}
+
+.todo-input-wrapper i {
+  color: #888;
+  padding-right: 0.3rem;
+  padding-left: 0.2rem;
+}
+
+.todo-input {
+  border: none;
+  font-size: 1.2rem;
+  background-color: transparent;
+}
+
+.todo-input:focus {
+  border: none;
+  outline: none;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -30,6 +61,7 @@ nav {
 nav button {
   font-size: 0.8rem;
   border: none;
+  padding: 0.8rem 0.3rem;
   background-color: transparent;
 }
 
@@ -37,6 +69,12 @@ nav button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+  padding: 0.2rem 0;
+}
+
+.todos .todo:last-child {
+  border-bottom: none;
 }
 
 .todo label {
@@ -66,4 +104,5 @@ nav button {
 .todo div .expandOptions {
   height: 4rem;
   padding: 0.5rem;
+  border: 1px solid #888;
 }
