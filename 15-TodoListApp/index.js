@@ -60,6 +60,11 @@ function createTodo(id, todoText) {
   editLi.appendChild(document.createTextNode("Edit"));
 
   const deleteLi = document.createElement("li");
+  deleteLi.addEventListener("click", function () {
+    const idToRemove = this.closest(".todo").id;
+    const todoToRemove = document.getElementById(idToRemove);
+    todos.removeChild(todoToRemove);
+  });
   const deleteIcon = document.createElement("i");
   deleteIcon.classList.add("fa-solid", "fa-trash");
   deleteLi.appendChild(deleteIcon);
