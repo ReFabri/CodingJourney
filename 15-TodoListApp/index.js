@@ -1,21 +1,19 @@
 const todoInput = document.querySelector(".todo-input");
 const todos = document.querySelector(".todos");
 const expandOptions = document.querySelector(".todo div > i");
+const clearBtn = document.querySelector("nav > button");
 
-let todosData = JSON.parse(localStorage.getItem("todos")) || [];
-let idCounter = todosData[todosData.length - 1]?.id + 1 || 0;
 let editId = "";
 
 document.addEventListener("DOMContentLoaded", addTodosToDOM);
 
 todoInput.addEventListener("keyup", (e) => {
-  todosData = JSON.parse(localStorage.getItem("todos")) || [];
-  idCounter = todosData[todosData.length - 1].id + 1 || 0;
+  let todosData = JSON.parse(localStorage.getItem("todos")) || [];
+  let idCounter = todosData[todosData.length - 1]?.id + 1 || 0;
   if (e.key === "Enter" && todoInput.value.trim()) {
     if (!editId) {
       addTodoToStorage(idCounter, todoInput.value);
       addTodosToDOM();
-      idCounter++;
     } else {
       const prevTodos = JSON.parse(localStorage.getItem("todos")) || [];
 
@@ -33,6 +31,11 @@ todoInput.addEventListener("keyup", (e) => {
     }
     todoInput.value = "";
   }
+});
+
+clearBtn.addEventListener("click", () => {
+  localStorage.setItem("todos", JSON.stringify([]));
+  todos.innerHTML = "";
 });
 
 function addTodosToDOM() {
