@@ -3,18 +3,19 @@ const todos = document.querySelector(".todos");
 const expandOptions = document.querySelector(".todo div > i");
 
 let idCounter = 0;
-let editMode = false;
 let editId = "";
+
+document.addEventListener("DOMContentLoaded", loadTodos);
 
 todoInput.addEventListener("keyup", (e) => {
   if (e.key === "Enter" && todoInput.value.trim()) {
-    if (!editMode) {
+    if (!editId) {
       const newTodo = createTodo(idCounter, todoInput.value);
       todos.appendChild(newTodo);
       idCounter++;
     } else {
       todos.querySelector(`#${editId} p`).textContent = todoInput.value;
-      editMode = false;
+      editId = "";
     }
     todoInput.value = "";
   }
@@ -65,12 +66,24 @@ function createTodo(id, todoText) {
 
   ul.appendChild(editLi);
   ul.appendChild(deleteLi);
-
   div.appendChild(ul);
-
   todoItem.appendChild(div);
 
+  let prevTodos = JSON.parse(localStorage.getItem("todos")) || [];
+  prevTodos.push({ id, text: todoText });
+  localStorage.setItem("todos", JSON.stringify(prevTodos));
+
   return todoItem;
+}
+
+function loadTodos() {
+  const prevTodos = JSON.parse(localStorage.getItem("todos")) || [];
+  localStorage.setItem("todos", JSON.stringify([]));
+  todos.innerHTML = "";
+  prevTodos.forEach((prevTodo) => {
+    const newTodo = createTodo(prevTodo.id, prevTodo.text);
+    todos.appendChild(newTodo);
+  });
 }
 
 function todoShowHideMenu(el) {
@@ -92,6 +105,10 @@ function deleteCurrentTodo(el) {
     const idToRemove = this.closest(".todo").id;
     const todoToRemove = document.getElementById(idToRemove);
     todos.removeChild(todoToRemove);
+
+    let prevTodos = JSON.parse(localStorage.getItem("todos")) || [];
+    prevTodos = prevTodos.filter((todo) => todo.id !== idToRemove);
+    localStorage.setItem("todos", JSON.stringify(prevTodos));
   });
 }
 
@@ -99,8 +116,14 @@ function editCurrentTodo(el) {
   el.addEventListener("click", function () {
     const idToEdit = this.closest(".todo").id;
     todoInput.focus();
-    editMode = true;
     editId = idToEdit;
     el.parentElement.classList.remove("expandOptions");
+
+    let prevTodos = JSON.parse(localStorage.getItem("todos")) || [];
+    const todoIndex = prevTodos.findIndex((todo) => todo.id === idToEdit);
+    if (todoIndex !== -1) {
+      prevTodos[todoIndex].text = todoInput.value;
+      localStorage.setItem("todos", JSON.stringify(prevTodos));
+    }
   });
 }
