@@ -8,24 +8,20 @@ let editId = "";
 document.addEventListener("DOMContentLoaded", addTodosToDOM);
 
 todoInput.addEventListener("keyup", (e) => {
-  let todosData = JSON.parse(localStorage.getItem("todos")) || [];
-  let idCounter = todosData[todosData.length - 1]?.id + 1 || 0;
+  const prevTodos = getTodosFromStorage();
+  let idCounter = prevTodos[prevTodos.length - 1]?.id + 1 || 0;
   if (e.key === "Enter" && todoInput.value.trim()) {
     if (!editId) {
       addTodoToStorage(idCounter, todoInput.value);
       addTodosToDOM();
     } else {
-      const prevTodos = JSON.parse(localStorage.getItem("todos")) || [];
-
       const todoIndex = prevTodos.findIndex(
         (todo) => `todo_${todo.id}` === editId
       );
-
       if (todoIndex !== -1) {
         prevTodos[todoIndex].text = todoInput.value;
         localStorage.setItem("todos", JSON.stringify(prevTodos));
       }
-
       addTodosToDOM();
       editId = "";
     }
@@ -38,9 +34,13 @@ clearBtn.addEventListener("click", () => {
   todos.innerHTML = "";
 });
 
+function getTodosFromStorage() {
+  return JSON.parse(localStorage.getItem("todos")) || [];
+}
+
 function addTodosToDOM() {
   todos.innerHTML = "";
-  let prevTodos = JSON.parse(localStorage.getItem("todos")) || [];
+  const prevTodos = getTodosFromStorage();
   prevTodos.forEach((prevTodo) => {
     const newTodo = createTodoElement(prevTodo.id, prevTodo.text);
     todos.appendChild(newTodo);
@@ -48,8 +48,8 @@ function addTodosToDOM() {
 }
 
 function addTodoToStorage(id, text) {
-  const prevTodos = JSON.parse(localStorage.getItem("todos")) || [];
-  prevTodos.push({ id, text });
+  const prevTodos = getTodosFromStorage();
+  prevTodos.push({ id, text, completed: false });
   localStorage.setItem("todos", JSON.stringify(prevTodos));
 }
 
@@ -64,6 +64,7 @@ function createTodoElement(id, todoText) {
   const input = document.createElement("input");
   input.type = "checkbox";
   input.id = `check_${id}`;
+  checkCompletedTodo(input);
 
   const p = document.createElement("p");
   p.textContent = todoText;
@@ -121,7 +122,7 @@ function todoShowHideMenu(el) {
 function deleteCurrentTodo(el) {
   el.addEventListener("click", function () {
     const idToRemove = this.closest(".todo").id;
-    let prevTodos = JSON.parse(localStorage.getItem("todos")) || [];
+    let prevTodos = getTodosFromStorage();
     prevTodos = prevTodos.filter((todo) => `todo_${todo.id}` !== idToRemove);
     localStorage.setItem("todos", JSON.stringify(prevTodos));
     addTodosToDOM();
@@ -135,3 +136,35 @@ function editCurrentTodo(el) {
     el.parentElement.classList.remove("expandOptions");
   });
 }
+
+function checkCompletedTodo(el) {
+  el.addEventListener("change", function () {
+    const prevTodos = getTodosFromStorage();
+    const todoIndex = prevTodos.findIndex(
+      (todo) => `todo_${todo.id}` === this.closest(".todo").id
+    );
+    if (todoIndex === -1) return;
+    if (el.checked) {
+      prevTodos[todoIndex].completed = true;
+    } else {
+      prevTodos[todoIndex].completed = false;
+    }
+    localStorage.setItem("todos", JSON.stringify(prevTodos));
+  });
+}
+
+/*
+When the page loads:
+  addTodosToDOM gets todos from localStorage, creates the li's and append to page.
+
+When user enter a new todo:
+  addTodoToStorage  get the previous todos array,
+    create a new todo with a new ID and the input text and
+    append the new Todo to the array in localStorage.
+
+When user edit a todo:
+  Get previous todos from localStorage, find it's ID and edit the text.
+    store the edited todo to localStorage.
+    addTodosToDOM gets todos from localStorage, creates the li's and append to page.
+
+*/
