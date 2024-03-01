@@ -7,10 +7,8 @@ const filterBtns = document.querySelectorAll("nav > div > button");
 let editId = "";
 let filter = "All";
 
-// document.addEventListener("DOMContentLoaded", addTodosToDOM);
 document.addEventListener("DOMContentLoaded", () => {
   filterBtns[0].click();
-  filterBtns[0].focus();
 });
 
 todoInput.addEventListener("keyup", (e) => {
@@ -20,6 +18,7 @@ todoInput.addEventListener("keyup", (e) => {
     if (!editId) {
       addTodoToStorage(idCounter, todoInput.value);
       addTodosToDOM();
+      filterBtns[0].click();
     } else {
       const todoIndex = prevTodos.findIndex(
         (todo) => `todo_${todo.id}` === editId
@@ -35,8 +34,12 @@ todoInput.addEventListener("keyup", (e) => {
   }
 });
 
-filterBtns.forEach((btn) => {
-  btn.addEventListener("click", function () {
+filterBtns.forEach((button) => {
+  button.addEventListener("click", function () {
+    filterBtns.forEach((btn) => {
+      btn.classList.remove("activeFilter");
+    });
+    this.classList.add("activeFilter");
     filter = this.id;
     addTodosToDOM();
   });
