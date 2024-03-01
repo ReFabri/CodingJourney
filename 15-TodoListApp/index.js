@@ -2,10 +2,16 @@ const todoInput = document.querySelector(".todo-input");
 const todos = document.querySelector(".todos");
 const expandOptions = document.querySelector(".todo div > i");
 const clearBtn = document.querySelector("nav > button");
+const filterBtns = document.querySelectorAll("nav > div > button");
 
 let editId = "";
+let filter = "All";
 
-document.addEventListener("DOMContentLoaded", addTodosToDOM);
+// document.addEventListener("DOMContentLoaded", addTodosToDOM);
+document.addEventListener("DOMContentLoaded", () => {
+  filterBtns[0].click();
+  filterBtns[0].focus();
+});
 
 todoInput.addEventListener("keyup", (e) => {
   const prevTodos = getTodosFromStorage();
@@ -29,6 +35,13 @@ todoInput.addEventListener("keyup", (e) => {
   }
 });
 
+filterBtns.forEach((btn) => {
+  btn.addEventListener("click", function () {
+    filter = this.id;
+    addTodosToDOM();
+  });
+});
+
 clearBtn.addEventListener("click", () => {
   localStorage.setItem("todos", JSON.stringify([]));
   todos.innerHTML = "";
@@ -40,9 +53,14 @@ function getTodosFromStorage() {
 
 function addTodosToDOM() {
   todos.innerHTML = "";
-  const prevTodos = getTodosFromStorage();
+  let prevTodos = getTodosFromStorage();
+  if (!prevTodos.length) return;
+  if (filter === "Pending")
+    prevTodos = prevTodos.filter((todo) => !todo.completed);
+  else if (filter === "Completed")
+    prevTodos = prevTodos.filter((todo) => todo.completed);
   prevTodos.forEach((prevTodo) => {
-    const newTodo = createTodoElement(prevTodo.id, prevTodo.text);
+    const newTodo = createTodoElement({ ...prevTodo });
     todos.appendChild(newTodo);
   });
 }
@@ -53,7 +71,7 @@ function addTodoToStorage(id, text) {
   localStorage.setItem("todos", JSON.stringify(prevTodos));
 }
 
-function createTodoElement(id, todoText) {
+function createTodoElement({ id, text, completed }) {
   const todoItem = document.createElement("li");
   todoItem.id = `todo_${id}`;
   todoItem.classList.add("todo");
@@ -65,9 +83,10 @@ function createTodoElement(id, todoText) {
   input.type = "checkbox";
   input.id = `check_${id}`;
   checkCompletedTodo(input);
+  input.checked = completed;
 
   const p = document.createElement("p");
-  p.textContent = todoText;
+  p.textContent = text;
 
   label.appendChild(input);
   label.appendChild(p);
@@ -150,21 +169,6 @@ function checkCompletedTodo(el) {
       prevTodos[todoIndex].completed = false;
     }
     localStorage.setItem("todos", JSON.stringify(prevTodos));
+    addTodosToDOM();
   });
 }
-
-/*
-When the page loads:
-  addTodosToDOM gets todos from localStorage, creates the li's and append to page.
-
-When user enter a new todo:
-  addTodoToStorage  get the previous todos array,
-    create a new todo with a new ID and the input text and
-    append the new Todo to the array in localStorage.
-
-When user edit a todo:
-  Get previous todos from localStorage, find it's ID and edit the text.
-    store the edited todo to localStorage.
-    addTodosToDOM gets todos from localStorage, creates the li's and append to page.
-
-*/
