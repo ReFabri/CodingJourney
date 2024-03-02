@@ -13,6 +13,7 @@ button {
   color: #fff;
   border: none;
   font-size: 1.6rem;
+  border-radius: 0.5rem;
 }
 
 .main-container {
@@ -43,7 +44,6 @@ button {
   width: 100px;
   height: 100px;
   background-color: yellow;
-  transform: rotate(45deg);
 }
 
 .half-square {
