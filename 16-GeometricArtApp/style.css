@@ -34,18 +34,30 @@ button {
 .tile {
   width: 100px;
   height: 100px;
-  background-color: yellow;
-  position: relative;
+  background-color: #000;
   overflow: hidden;
 }
 
-.half {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 150px;
-  height: 150px;
-  background-color: #000;
+.circle {
+  border-radius: 100px;
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  transform: rotate(45deg);
+}
+
+.half-square {
   transform-origin: top left;
+  width: 142px;
+  height: 142px;
+  background-color: orange;
+  transform: rotate(45deg);
+}
+
+.half-circle {
+  border-radius: 100px;
+  width: 200px;
+  height: 200px;
+  background-color: yellow;
   transform: rotate(45deg);
 }
