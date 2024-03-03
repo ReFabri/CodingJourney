@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", "sans-serif";
+}
+
+.main-container {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tile {
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid black;
+}
+
+.row {
+  display: flex;
+}
+
+.bottom-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.bottom-bar button {
+  font-size: 1.2rem;
+  padding: 0.3rem 0;
+}
