@@ -57,3 +57,11 @@ body {
 .bottom-bar button:hover {
   background-color: #384355;
 }
+
+.snake-tile {
+  background-color: #60cbff;
+}
+
+.food-tile {
+  background-color: #ff003e;
+}
