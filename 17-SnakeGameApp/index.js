@@ -6,11 +6,14 @@ const [btnLeft, btnUp, btnRight, btnDown] =
 const gridSize = 21;
 let snake = [{ x: 11, y: 11 }];
 let food = createFoodCoords();
+let direction = "up";
+let gameInterval;
+let gameSpeedDelay = 500;
 
 function drawGame() {
   tilesWrapper.innerHTML = "";
   drawSnake();
-  drawFood(food);
+  drawFood();
 }
 
 function createTile(className, coords) {
@@ -28,8 +31,8 @@ function drawSnake() {
   });
 }
 
-function drawFood(coord) {
-  const foodTile = createTile("food-tile", coord);
+function drawFood() {
+  const foodTile = createTile("food-tile", food);
   tilesWrapper.appendChild(foodTile);
 }
 
@@ -37,6 +40,42 @@ function createFoodCoords() {
   const x = Math.ceil(Math.random() * gridSize);
   const y = Math.ceil(Math.random() * gridSize);
   return { x, y };
+}
+
+function moveSnake() {
+  const head = { ...snake[0] };
+  switch (direction) {
+    case "up":
+      head.y--;
+      break;
+
+    case "down":
+      head.y++;
+      break;
+
+    case "left":
+      head.x--;
+      break;
+
+    case "right":
+      head.x++;
+      break;
+
+    default:
+      break;
+  }
+  snake.unshift(head);
+
+  if (head.x === food.x && head.y === food.y) {
+    food = createFoodCoords();
+    clearInterval(gameInterval);
+    gameInterval = setInterval(() => {
+      moveSnake();
+      drawGame();
+    }, gameSpeedDelay);
+  } else {
+    snake.pop();
+  }
 }
 
 drawGame();
