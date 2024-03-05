@@ -9,6 +9,7 @@ let food = createFoodCoords();
 let direction = "up";
 let gameInterval;
 let gameSpeedDelay = 500;
+let gameStarted = false;
 
 function drawGame() {
   tilesWrapper.innerHTML = "";
@@ -76,6 +77,14 @@ function moveSnake() {
   } else {
     snake.pop();
   }
+}
+
+function startGame() {
+  gameStarted = true;
+  gameInterval = setInterval(() => {
+    moveSnake();
+    drawGame();
+  }, gameSpeedDelay);
 }
 
 drawGame();
