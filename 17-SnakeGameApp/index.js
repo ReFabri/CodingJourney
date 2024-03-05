@@ -8,7 +8,7 @@ let snake = [{ x: 11, y: 11 }];
 let food = createFoodCoords();
 let direction = "up";
 let gameInterval;
-let gameSpeedDelay = 500;
+let gameSpeedDelay = 100;
 let gameStarted = false;
 
 function drawGame() {
@@ -87,4 +87,28 @@ function startGame() {
   }, gameSpeedDelay);
 }
 
-drawGame();
+function handleKeyPress(event) {
+  if (
+    (!gameStarted && event.code === "Space") ||
+    (!gameStarted && event.key === " ")
+  ) {
+    startGame();
+  } else {
+    switch (event.key) {
+      case "ArrowUp":
+        direction = "up";
+        break;
+      case "ArrowDown":
+        direction = "down";
+        break;
+      case "ArrowLeft":
+        direction = "left";
+        break;
+      case "ArrowRight":
+        direction = "right";
+        break;
+    }
+  }
+}
+
+document.addEventListener("keydown", handleKeyPress);
