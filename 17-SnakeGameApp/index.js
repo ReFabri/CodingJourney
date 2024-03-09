@@ -1,7 +1,6 @@
-const [score, highScore] = document.querySelectorAll(".top-bar p");
+const [scoreTag, highScoreTag] = document.querySelectorAll(".top-bar p");
 const tilesWrapper = document.querySelector(".tiles-wrapper");
-const [btnLeft, btnUp, btnRight, btnDown] =
-  document.querySelectorAll(".bottom-bar button");
+const buttons = document.querySelectorAll(".bottom-bar button");
 
 const gridSize = 21;
 let snake = [{ x: 11, y: 11 }];
@@ -10,6 +9,7 @@ let direction = "up";
 let gameInterval;
 let gameSpeedDelay = 200;
 let gameStarted = false;
+let highScore = 0;
 
 function drawGame() {
   tilesWrapper.innerHTML = "";
@@ -47,19 +47,19 @@ function createFoodCoords() {
 function moveSnake() {
   const head = { ...snake[0] };
   switch (direction) {
-    case "up":
+    case "ArrowUp":
       head.y--;
       break;
 
-    case "down":
+    case "ArrowDown":
       head.y++;
       break;
 
-    case "left":
+    case "ArrowLeft":
       head.x--;
       break;
 
-    case "right":
+    case "ArrowRight":
       head.x++;
       break;
 
@@ -91,28 +91,28 @@ function startGame() {
   }, gameSpeedDelay);
 }
 
-function handleKeyPress(event) {
-  if (
-    (!gameStarted && event.code === "Space") ||
-    (!gameStarted && event.key === " ")
-  ) {
+function handleKeyboardPress(event) {
+  const directions = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
+  if (!gameStarted && directions.includes(event.key)) {
+    direction = event.key;
     startGame();
   } else {
-    switch (event.key) {
-      case "ArrowUp":
-        direction = "up";
-        break;
-      case "ArrowDown":
-        direction = "down";
-        break;
-      case "ArrowLeft":
-        direction = "left";
-        break;
-      case "ArrowRight":
-        direction = "right";
-        break;
+    if (directions.includes(event.key)) {
+      direction = event.key;
     }
   }
+}
+
+function handleButtonPress(btn) {
+  return () => {
+    const directions = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
+    if (!gameStarted) {
+      direction = btn.id;
+      startGame();
+    } else {
+      direction = btn.id;
+    }
+  };
 }
 
 function increaseSpeed() {
@@ -151,7 +151,7 @@ function resetGame() {
 
 function updateScore() {
   const currentScore = (snake.length - 1) * 10;
-  score.textContent = `Score: ${currentScore.toString()}`;
+  scoreTag.textContent = `Score: ${currentScore.toString()}`;
 }
 
 function stopGame() {
@@ -159,4 +159,16 @@ function stopGame() {
   gameStarted = false;
 }
 
-document.addEventListener("keydown", handleKeyPress);
+function updateHighScore() {
+  const currentScore = (snake.length - 1) * 10;
+  if (currentScore > highScore) {
+    highScore = currentScore;
+    highScoreTag.textContent = `High Score: ${highScore.toString()}`;
+  }
+}
+
+buttons.forEach((btn) => {
+  btn.addEventListener("click", handleButtonPress(btn));
+});
+
+document.addEventListener("keydown", handleKeyboardPress);
