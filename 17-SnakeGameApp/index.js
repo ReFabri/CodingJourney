@@ -15,6 +15,7 @@ function drawGame() {
   tilesWrapper.innerHTML = "";
   drawSnake();
   drawFood();
+  updateScore();
 }
 
 function createTile(className, coords) {
@@ -139,10 +140,23 @@ function checkCollision() {
 }
 
 function resetGame() {
+  updateHighScore();
+  stopGame();
   snake = [{ x: 10, y: 10 }];
   food = createFoodCoords();
   direction = "up";
   gameSpeedDelay = 200;
+  updateScore();
+}
+
+function updateScore() {
+  const currentScore = (snake.length - 1) * 10;
+  score.textContent = `Score: ${currentScore.toString()}`;
+}
+
+function stopGame() {
+  clearInterval(gameInterval);
+  gameStarted = false;
 }
 
 document.addEventListener("keydown", handleKeyPress);
