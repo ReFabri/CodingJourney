@@ -8,7 +8,7 @@ let snake = [{ x: 11, y: 11 }];
 let food = createFoodCoords();
 let direction = "up";
 let gameInterval;
-let gameSpeedDelay = 100;
+let gameSpeedDelay = 200;
 let gameStarted = false;
 
 function drawGame() {
@@ -69,9 +69,11 @@ function moveSnake() {
 
   if (head.x === food.x && head.y === food.y) {
     food = createFoodCoords();
+    increaseSpeed();
     clearInterval(gameInterval);
     gameInterval = setInterval(() => {
       moveSnake();
+      checkCollision();
       drawGame();
     }, gameSpeedDelay);
   } else {
@@ -83,6 +85,7 @@ function startGame() {
   gameStarted = true;
   gameInterval = setInterval(() => {
     moveSnake();
+    checkCollision();
     drawGame();
   }, gameSpeedDelay);
 }
@@ -109,6 +112,37 @@ function handleKeyPress(event) {
         break;
     }
   }
+}
+
+function increaseSpeed() {
+  if (gameSpeedDelay > 150) {
+    gameSpeedDelay -= 5;
+  } else if (gameSpeedDelay > 100) {
+    gameSpeedDelay -= 3;
+  } else if (gameSpeedDelay > 50) {
+    gameSpeedDelay -= 2;
+  } else if (gameSpeedDelay > 25) {
+    gameSpeedDelay -= 1;
+  }
+}
+
+function checkCollision() {
+  const head = snake[0];
+  if (head.x < 1 || head.x > gridSize || head.y < 1 || head.y > gridSize) {
+    resetGame();
+  }
+  for (let i = 1; i < snake.length; i++) {
+    if (head.x === snake[i].x && head.y === snake[i].y) {
+      resetGame();
+    }
+  }
+}
+
+function resetGame() {
+  snake = [{ x: 10, y: 10 }];
+  food = createFoodCoords();
+  direction = "up";
+  gameSpeedDelay = 200;
 }
 
 document.addEventListener("keydown", handleKeyPress);
