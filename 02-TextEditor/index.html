@@ -72,14 +72,15 @@
           <i class="fa-solid fa-outdent"></i>
         </button>
         <select name="formatBlock" id="formatBlock" class="adv-option-button">
-          <option value="H1">H1</option>
-          <option value="H2">H2</option>
-          <option value="H3">H3</option>
-          <option value="H4">H4</option>
-          <option value="H5">H5</option>
-          <option value="H6">H6</option>
+          <option value="<H1>">H1</option>
+          <option value="<H2>">H2</option>
+          <option value="<H3>">H3</option>
+          <option value="<H4>">H4</option>
+          <option value="<H5>">H5</option>
+          <option value="<H6>">H6</option>
         </select>
         <select name="fontName" id="fontName" class="adv-option-button">
+          <option value="Arial">Arial</option>
           <option value="Times New Roman">Times New Roman</option>
           <option value="Garamond">Garamond</option>
           <option value="Georgia">Georgia</option>
@@ -87,27 +88,27 @@
           <option value="Cursive">Cursive</option>
         </select>
         <select name="fontSize" id="fontSize" class="adv-option-button">
-          <option value="8px">8</option>
-          <option value="10px">10</option>
-          <option value="12px">12</option>
-          <option value="16px">16</option>
-          <option value="24px">24</option>
-          <option value="36px">36</option>
-          <option value="48px">48</option>
-          <option value="72px">72</option>
+          <option value="1">10px</option>
+          <option value="2">13px</option>
+          <option value="3">16px</option>
+          <option value="4">18px</option>
+          <option value="5">24px</option>
+          <option value="6">32px</option>
+          <option value="7">48px</option>
         </select>
-        <div>
-          <input type="color" id="fontColor" name="fontColor" value="#000000" />
-          <label for="fontColor">Font Color</label>
+        <div class="color-container">
+          <input type="color" id="foreColor" name="foreColor" value="#000000" class="adv-option-button"/>
+          <label class="color-label" for="foreColor">Font Color</label>
         </div>
-        <div>
+        <div class="color-container">
           <input
             type="color"
-            id="highlightColor"
-            name="highlightColor"
+            id="hiliteColor"
+            name="hiliteColor"
+            class="adv-option-button"
             value="#ffffff"
           />
-          <label for="highlightColor">Highlight Color</label>
+          <label class="color-label" for="hiliteColor">Highlight Color</label>
         </div>
       </div>
       <div class="text-editor" contenteditable="true">

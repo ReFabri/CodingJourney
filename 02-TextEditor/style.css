@@ -4,7 +4,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
 }
 body {
   display: flex;
@@ -33,10 +32,21 @@ button {
   border: none;
   border-radius: 0.2rem;
   font-size: 1rem;
+  font-family: "Poppins", sans-serif;
 }
 
 button:hover {
   border: 2px solid #ccc;
+}
+
+.color-container {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.adv-option-button,
+.color-label {
+  font-family: "Poppins", sans-serif;
 }
 
 .text-editor {
@@ -69,8 +79,4 @@ input[type="color"]::-moz-color-swatch {
   margin-left: 0.5rem;
   border-radius: 15px;
   box-shadow: 0 0 0 2px #fff, 0 0 0 3px #020929;
-}
-
-.active {
-  background-color: #e0e9ff;
 }

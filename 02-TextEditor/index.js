@@ -10,35 +10,8 @@ const formatButtons = document.querySelectorAll(".format");
 const scriptButtons = document.querySelectorAll(".script");
 const writingArea = document.getElementById("text-input");
 
-console.log(advOptionsButtons);
-
 function initializer() {
-  highlighter(alignButtons, true);
-  highlighter(spacingButtons, true);
-  highlighter(formatButtons, false);
-  highlighter(scriptButtons, true);
-  fontSizeSelect.value = "12px";
-}
-
-function highlighter(className, needsRemoval) {
-  className.forEach((button) => {
-    button.addEventListener("click", () => {
-      if (needsRemoval) {
-        let alreadyActive = false;
-        if (button.classList.contains("active")) {
-          alreadyActive = true;
-        }
-        className.forEach((button) => {
-          button.classList.remove("active");
-        });
-        if (!alreadyActive) {
-          button.classList.add("active");
-        }
-      } else {
-        button.classList.toggle("active");
-      }
-    });
-  });
+  fontSizeSelect.value = "3";
 }
 
 const modifyText = (command, defaultUi, value) => {
@@ -53,6 +26,8 @@ optionsButtons.forEach((button) => {
 
 advOptionsButtons.forEach((button) => {
   button.addEventListener("change", () => {
+    console.log(button.id);
+    console.log(button.value);
     modifyText(button.id, false, button.value);
   });
 });
