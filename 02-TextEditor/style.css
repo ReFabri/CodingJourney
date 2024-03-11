@@ -25,9 +25,8 @@ body {
 }
 
 button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   width: 2rem;
   height: 2rem;
   background-color: white;
@@ -47,4 +46,31 @@ button:hover {
   border: 1px solid #ccc;
   border-radius: 0.4rem;
   cursor: text;
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  width: 40px;
+  height: 28px;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  margin-left: 0.5rem;
+  border-radius: 15px;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px #020929;
+}
+
+input[type="color"]::-moz-color-swatch {
+  margin-left: 0.5rem;
+  border-radius: 15px;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px #020929;
+}
+
+.active {
+  background-color: #e0e9ff;
 }
