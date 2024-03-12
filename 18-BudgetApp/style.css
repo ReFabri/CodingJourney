@@ -4,24 +4,96 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
   font-weight: 400;
+  color: #333;
+}
+
+h2 {
+  font-size: 1.2rem;
+}
+
+h3 {
+  font-size: 1rem;
+}
+
+body {
+  background-color: #f0f0f0;
+}
+
+.main-container {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  gap: 1rem;
 }
 
 .top-box {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
 }
 
-button {
+.top-box > div {
+  background-color: #fff;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+}
+
+.top-box input {
+  border: 1px solid #ccc;
+  border-radius: 0.2rem;
+  padding: 0.3rem;
+  margin: 0.5rem 0;
+}
+
+.top-box button {
   display: block;
+  background-color: #577ef3;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
 }
 
 .mid-box {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   text-align: center;
+  background-color: #577ef3;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.mid-box * {
+  color: #fff;
+}
+
+.mid-box > div > h3:first-child {
+  font-weight: 700;
+}
+
+.bottom-box {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
+.expenses {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
 }
 
 li {
   display: grid;
-  grid-template-columns: auto 6rem 2rem 2rem;
+  grid-template-columns: 5fr 1fr 2rem 2rem;
+  border-left: 4px solid #577ef3;
+  padding: 0.4rem 0 0.4rem 0.6rem;
+}
+
+i {
+  text-align: center;
 }
