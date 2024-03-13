@@ -7,7 +7,12 @@ const [labelBudget, labelExpenses, labelBalance] = document.querySelectorAll(
 );
 const expenses = document.querySelector(".expenses");
 
+let BUDGET = 0;
+let EXPENSES = 0;
+let BALANCE = 0;
+
 function createExpense() {
+  if (!inputExpenseName.value.trim() || !inputExpenseAmount.value) return;
   const li = document.createElement("li");
   const pName = document.createElement("p");
   pName.innerText = inputExpenseName.value;
@@ -37,10 +42,12 @@ function createExpense() {
   li.appendChild(iDelete);
   li.appendChild(editDiv);
   expenses.appendChild(li);
+  setExpenses();
 }
 
 function deleteExpense() {
   expenses.removeChild(this.parentElement);
+  setExpenses();
 }
 
 function editExpense() {
@@ -64,25 +71,28 @@ function closeEdit() {
   amount.innerText = newAmount.value;
   editDiv.style.padding = "0";
   editDiv.style.height = "0";
+  setExpenses();
 }
 
 function setBudget() {
-  setExpenses();
   if (!inputBudget.value || Number(inputBudget.value) <= 0) return;
-  labelBudget.innerText = inputBudget.value;
+  BUDGET = inputBudget.value;
+  labelBudget.innerText = BUDGET;
+  setExpenses();
 }
 
 function setExpenses() {
+  EXPENSES = 0;
   const amounts = expenses.querySelectorAll(".expense-amount");
   if (!amounts.length) {
-    labelExpenses.innerText = "0";
+    EXPENSES = 0;
+    labelExpenses.innerText = EXPENSES;
     return;
   }
-  let allAmounts = 0;
   amounts.forEach((expense) => {
-    allAmounts += Number(expense.innerText);
+    EXPENSES += Number(expense.innerText);
   });
-  labelExpenses.innerText = allAmounts;
+  labelExpenses.innerText = EXPENSES;
 }
 
 btnSetBudget.addEventListener("click", setBudget);
