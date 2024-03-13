@@ -43,11 +43,13 @@ function createExpense() {
   li.appendChild(editDiv);
   expenses.appendChild(li);
   setExpenses();
+  setBalance();
 }
 
 function deleteExpense() {
   expenses.removeChild(this.parentElement);
   setExpenses();
+  setBalance();
 }
 
 function editExpense() {
@@ -72,6 +74,7 @@ function closeEdit() {
   editDiv.style.padding = "0";
   editDiv.style.height = "0";
   setExpenses();
+  setBalance();
 }
 
 function setBudget() {
@@ -79,6 +82,7 @@ function setBudget() {
   BUDGET = inputBudget.value;
   labelBudget.innerText = BUDGET;
   setExpenses();
+  setBalance();
 }
 
 function setExpenses() {
@@ -93,6 +97,16 @@ function setExpenses() {
     EXPENSES += Number(expense.innerText);
   });
   labelExpenses.innerText = EXPENSES;
+}
+
+function setBalance() {
+  BALANCE = BUDGET - EXPENSES;
+  if (BALANCE >= 0) {
+    labelBalance.classList.remove("negative");
+  } else {
+    labelBalance.classList.add("negative");
+  }
+  labelBalance.innerText = BALANCE;
 }
 
 btnSetBudget.addEventListener("click", setBudget);
