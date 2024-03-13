@@ -44,6 +44,8 @@ input[type="number"] {
 }
 
 .top-box > div {
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   padding: 0.8rem;
   border-radius: 0.5rem;
@@ -57,6 +59,7 @@ input[type="number"] {
 
 .top-box button {
   display: block;
+  width: fit-content;
   background-color: #577ef3;
   color: #fff;
   border: none;
