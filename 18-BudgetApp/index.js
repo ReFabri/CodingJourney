@@ -13,6 +13,7 @@ let BALANCE = 0;
 
 function createExpense() {
   if (!inputExpenseName.value.trim() || !inputExpenseAmount.value) return;
+  inputExpenseName.focus();
   const li = document.createElement("li");
   const pName = document.createElement("p");
   pName.innerText = inputExpenseName.value;
@@ -44,6 +45,8 @@ function createExpense() {
   expenses.appendChild(li);
   setExpenses();
   setBalance();
+  inputExpenseName.value = "";
+  inputExpenseAmount.value = "";
 }
 
 function deleteExpense() {
@@ -78,9 +81,10 @@ function closeEdit() {
 }
 
 function setBudget() {
-  if (!inputBudget.value || Number(inputBudget.value) <= 0) return;
-  BUDGET = inputBudget.value;
+  if (!inputBudget.value || Number(inputBudget.value) < 0) return;
+  BUDGET = Number(inputBudget.value);
   labelBudget.innerText = BUDGET;
+  inputBudget.value = "";
   setExpenses();
   setBalance();
 }
@@ -110,4 +114,10 @@ function setBalance() {
 }
 
 btnSetBudget.addEventListener("click", setBudget);
+inputBudget.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") setBudget();
+});
 btnAddExpense.addEventListener("click", createExpense);
+inputExpenseAmount.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") createExpense();
+});

@@ -7,7 +7,7 @@
   color: #333;
 }
 body {
-  background-color: #f0f0f0;
+  background-color: #ddd;
 }
 
 h2 {
@@ -25,6 +25,7 @@ input::-webkit-inner-spin-button {
 }
 
 input[type="number"] {
+  appearance: textfield;
   -moz-appearance: textfield;
 }
 
@@ -121,12 +122,10 @@ input[type="number"] {
   top: 0;
   left: -4px;
   right: 0;
-  color: #fff;
   display: grid;
-  grid-template-columns: 4fr 6rem 3rem;
+  grid-template-columns: auto 6rem 3rem;
   border-radius: 0.2rem;
   gap: 0.3rem;
-  padding: 0;
   height: 0;
   transition: all 300ms ease-out;
   overflow: hidden;
@@ -152,4 +151,23 @@ input[type="number"] {
   font-size: 1.2rem;
   border-radius: 0.3rem;
   text-shadow: 1px 1px 1rem #fff, 0 0 1rem #fff, 0 0 0.2rem #fff;
+}
+
+@media (max-width: 650px) {
+  .main-container {
+    width: 95%;
+    gap: 2rem;
+  }
+  .top-box {
+    grid-template-columns: 1fr;
+  }
+
+  .expenses > li > div {
+    grid-template-columns: auto 3.5rem 2.5rem;
+    gap: 0.3rem;
+  }
+
+  .expenses > li > div > input {
+    width: 100%;
+  }
 }
